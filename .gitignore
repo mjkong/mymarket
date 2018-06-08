@@ -1,0 +1,14 @@
+/bin
+.DS_Store
+.project
+*.bak
+crypto-config/*
+app/main/node_modules/
+app/main/package-lock.json
+app/main/hfc-key-store/
+app/store1/node_modules/
+app/store1/package-lock.json
+app/store1/hfc-key-store/
+app/store2/node_modules/
+app/store2/package-lock.json
+app/store2/hfc-key-store/
