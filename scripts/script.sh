@@ -89,12 +89,12 @@ instantiateChaincode () {
         # lets supply it directly as we know it using the "-o" option
         if [ -z "$CORE_PEER_TLS_ENABLED" -o "$CORE_PEER_TLS_ENABLED" = "false" ]; then
                 set -x
-                peer chaincode instantiate -o orderer0.mymarket.com:7050 -C $CHANNEL_NAME -n mycc -l ${LANGUAGE} -v ${VERSION} -c '{"Args":["init",""]}' -P "OR  ('Store1MSP.peer','Store2MSP.peer')" &> log.txt
+                peer chaincode instantiate -o orderer0.mymarket.com:7050 -C $CHANNEL_NAME -n mycc -l ${LANGUAGE} -v ${VERSION} -c '{"Args":["init","a","100","b","200"]}' -P "OR  ('Store1MSP.peer','Store2MSP.peer')" &> log.txt
                 res=$?
                 set +x
         else
                 set -x
-                peer chaincode instantiate -o orderer0.mymarket.com:7050 --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA -C $CHANNEL_NAME -n mycc -l ${LANGUAGE} -v 1.0 -c '{"Args":["init",""]}' -P "OR ('Store1MSP.peer','Store2MSP.peer')" &> log.txt
+                peer chaincode instantiate -o orderer0.mymarket.com:7050 --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA -C $CHANNEL_NAME -n mycc -l ${LANGUAGE} -v 1.0 -c '{"Args":["init","a","100","b","200"]}' -P "OR ('Store1MSP.peer','Store2MSP.peer')" &> log.txt
                 res=$?
                 set +x
         fi
