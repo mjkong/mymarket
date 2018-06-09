@@ -100,9 +100,11 @@ mymarket 디렉토리로 이동합니다.
 docker-compose -f node1.yaml up -d
 </pre><code>
 
+
 * VM2
 
 <pre><code>
 docker-compose -f node2.yaml up -d
 </pre></code>
+
 
