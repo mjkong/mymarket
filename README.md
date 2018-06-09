@@ -84,9 +84,25 @@ Key 파일명(66c2bea4ef42056d1f1807c978c8ec783e403557e1311c8beb1118244092ac4f_s
 
 위와 같이 ```ca.mymarket.com```, node2.yaml에서 ```ca2.store2.mymarket.com``` 도 수정합니다.
 
+### Fabric 네트워크 실행
 mymarket 프로젝트 디렉토리를 압축하여 VM2로 복사합니다.
 <pre><code>
 cd ../
 tar -cvf mymarket.tar mymarket
+</pre></code>
+
+각 VM에서 도커 컨테이너를 실행합니다.
+
+* VM1
+
+mymarket 디렉토리로 이동합니다.
+<pre><code>
+docker-compose -f node1.yaml up -d
+</pre><code>
+
+* VM2
+
+<pre><code>
+docker-compose -f node2.yaml up -d
 </pre></code>
 
