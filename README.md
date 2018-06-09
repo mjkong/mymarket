@@ -23,10 +23,10 @@
 #### Docker swarm 네트워크 설정
 
 * VM1
+
 VM1에서 다음의 명령을 실행
 
 <pre><code>docker swarm init</pre></code>
-
 
 <pre><code>docker swarm join-token manager</pre></code>
 위의 명령을 실행하면 아래와 같은 메시지를 확인 할 수 있으며 VM2에서 명령을 실행합니다.
@@ -35,11 +35,13 @@ VM1에서 다음의 명령을 실행
 다음의 명령을 통해서 도커 네트워크를 생성합니다.
 <pre><code>docker network create --attachable --driver overlay my-net</code></pre>
 
-* VM1 / VM2
 
-각 VM에서 현재의 github repository를 clone 합니다.
+github repository를 clone 합니다.
 
-<pre><code>git clone https://github.com/mjkong/mymarket</code></pre>
+<pre><code>
+git clone https://github.com/mjkong/mymarket
+cd mymarket
+</code></pre>
 
 ### Fabric 네트워크를 위한 아티팩트 생성
 
@@ -56,3 +58,35 @@ configtxgen -profile TwoOrgsChannel -outputCreateChannelTx ./channel-artifacts/c
 configtxgen -profile TwoOrgsChannel -outputAnchorPeersUpdate ./channel-artifacts/Store1MSPanchors.tx -channelID $CHANNEL_NAME -asOrg Store1MSP
 configtxgen -profile TwoOrgsChannel -outputAnchorPeersUpdate ./channel-artifacts/Store2MSPanchors.tx -channelID $CHANNEL_NAME -asOrg Store2MSP
 </pre></code>
+
+새로 생성된 인증서에서 CA Key파일의 정보를 YAML 파일에서 수정합니다.
+
+* ca.store1.mymarket.com 를 위한 인증서 위치
+<pre><code>
+~/mymarket/crypto-config/peerOrganizations/store1.mymarket.com/ca$ ls
+66c2bea4ef42056d1f1807c978c8ec783e403557e1311c8beb1118244092ac4f_sk  ca.store1.mymarket.com-cert.pem
+~/mymarket/crypto-config/peerOrganizations/store1.mymarket.com/ca$
+</pre></code>
+
+Key 파일명(66c2bea4ef42056d1f1807c978c8ec783e403557e1311c8beb1118244092ac4f_sk)을 node1.yaml의 다음 위치에 적용합니다.
+<pre><code>
+  ca.store1.mymarket.com:
+    image: hyperledger/fabric-ca
+    environment:
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=my-net
+      - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
+      - FABRIC_CA_SERVER_CA_NAME=ca.store1.mymarket.com
+      - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.store1.mymarket.com-cert.pem
+      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/**66c2bea4ef42056d1f1807c978c8ec783e403557e1311c8beb1118244092ac4f_sk**
+    ports:
+      - "17054:7054"
+</pre></code>
+
+위와 같이 ```ca.mymerket.com```, node2.yaml에서 ```ca2.store2.mymarket.com``` 도 수정합니다.
+
+mymarket 프로젝트 디렉토리를 압축하여 VM2로 복사합니다.
+<pre><code>
+cd ../
+tar -cvf mymarket.tar mymarket
+</pre></code>
+
