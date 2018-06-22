@@ -2,7 +2,6 @@
 .DS_Store
 .project
 *.bak
-crypto-config/*
 app/main/node_modules/
 app/main/package-lock.json
 app/main/hfc-key-store/

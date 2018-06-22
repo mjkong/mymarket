@@ -14,7 +14,7 @@ services:
       - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
       - FABRIC_CA_SERVER_CA_NAME=ca.store2.mymarket.com
       - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.store2.mymarket.com-cert.pem
-      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/d86d27ba98bdda7d421f6cb252340e02628935bacb89d3553219260291c807b0_sk
+      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/746f895a6c48a46aa090dc61e00b33bbd2eb4d1f9b2e14bd7454d59310b368b2_sk
     ports:
       - "27054:7054"
     command: sh -c 'fabric-ca-server start -b admin:adminpw -d'

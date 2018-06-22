@@ -75,18 +75,3 @@ joinChannelWithRetry () {
   fi
   verifyResult $res "After $MAX_RETRY attempts, peer${PEER}.org${ORG} has failed to Join the Channel"
 }
-
-installChaincode () {
-  PEER=$1
-  ORG=$2
-  setGlobals $PEER $ORG
-  VERSION=${3:-1.0}
-        set -x
-  peer chaincode install -n mycc -v ${VERSION} -l ${LANGUAGE} -p ${CC_SRC_PATH} &> log.txt
-  res=$?
-        set +x
-  cat log.txt
-  verifyResult $res "Chaincode installation on peer${PEER}.org${ORG} has Failed"
-  echo "===================== Chaincode is installed on peer${PEER}.org${ORG} ===================== "
-  echo
-}

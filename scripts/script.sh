@@ -5,7 +5,8 @@ DELAY=$2
 TIMEOUT=$3
 ORDERER_CA=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/mymarket.com/orderers/orderer0.mymarket.com/msp/tlscacerts/tlsca.mymarket.com-cert.pem
 LANGUAGE="golang"
-CC_SRC_PATH=github.com/chaincode/chaincode_example02/go
+#CC_SRC_PATH=github.com/chaincode/chaincode_example02/go
+CC_SRC_PATH=github.com/chaincode/mymarket
 
 . ./scripts/utils.sh
 
@@ -69,7 +70,7 @@ installChaincode () {
         setGlobals $PEER $ORG
         VERSION=${3:-1.0}
         set -x
-        peer chaincode install -n mycc -v ${VERSION} -l ${LANGUAGE} -p ${CC_SRC_PATH} &> log.txt
+        peer chaincode install -n marketcc -v ${VERSION} -l ${LANGUAGE} -p ${CC_SRC_PATH} &> log.txt
         res=$?
         set +x
         cat log.txt
@@ -89,12 +90,12 @@ instantiateChaincode () {
         # lets supply it directly as we know it using the "-o" option
         if [ -z "$CORE_PEER_TLS_ENABLED" -o "$CORE_PEER_TLS_ENABLED" = "false" ]; then
                 set -x
-                peer chaincode instantiate -o orderer0.mymarket.com:7050 -C $CHANNEL_NAME -n mycc -l ${LANGUAGE} -v ${VERSION} -c '{"Args":["init","a","100","b","200"]}' -P "OR  ('Store1MSP.peer','Store2MSP.peer')" &> log.txt
+                peer chaincode instantiate -o orderer0.mymarket.com:7050 -C $CHANNEL_NAME -n marketcc -l ${LANGUAGE} -v ${VERSION} -c '{"Args":[]}' -P "OR  ('Store1MSP.peer','Store2MSP.peer')" &> log.txt
                 res=$?
                 set +x
         else
                 set -x
-                peer chaincode instantiate -o orderer0.mymarket.com:7050 --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA -C $CHANNEL_NAME -n mycc -l ${LANGUAGE} -v 1.0 -c '{"Args":["init","a","100","b","200"]}' -P "OR ('Store1MSP.peer','Store2MSP.peer')" &> log.txt
+                peer chaincode instantiate -o orderer0.mymarket.com:7050 --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA -C $CHANNEL_NAME -n marketcc -l ${LANGUAGE} -v 1.0 -c '{"Args":[]}' -P "OR ('Store1MSP.peer','Store2MSP.peer')" &> log.txt
                 res=$?
                 set +x
         fi
