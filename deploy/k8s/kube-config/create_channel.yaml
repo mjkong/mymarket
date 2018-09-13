@@ -1,0 +1,55 @@
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: createchanneltx
+spec:
+  backoffLimit: 1
+  template:
+    metadata:
+      name: createchanneltx
+    spec:
+      restartPolicy: "Never"
+      volumes:
+      - name: sharedvolume
+        persistentVolumeClaim:
+          claimName: shared-pvc
+      containers:
+      - name: createchanneltx
+        image: hyperledger/fabric-tools:1.2.0
+        imagePullPolicy: Always
+        command: ["sh", "-c", "cd /shared && pwd && ls && export FABRIC_CFG_PATH=$PWD && configtxgen -profile TwoOrgsChannel -outputCreateChannelTx ${CHANNEL_NAME}.tx -channelID ${CHANNEL_NAME} && touch /shared/status_channeltx_complete "]
+        env:
+        - name: CHANNEL_NAME
+          value: mymarketchannel
+        - name: GODEBUG
+          value: "netdns=go"
+        volumeMounts:
+        - mountPath: /shared
+          name: sharedvolume
+      - name: createchannel
+        image: hyperledger/fabric-peer:1.2.0
+        imagePullPolicy: Always
+        command: ["sh", "-c", "while [ ! -f /shared/status_channeltx_complete ]; do echo Waiting for channeltx; sleep 2; done; peer channel create -o ${ORDERER_URL} -c ${CHANNEL_NAME} -f /shared/${CHANNEL_NAME}.tx && rm /shared/status_channeltx_complete && touch /shared/status_channelcreate_complete"]
+        env:
+        - name: CHANNEL_NAME
+          value: mymarketchannel
+        - name: ORDERER_URL
+          value: mymarket-orderer:31010
+        - name: CORE_PEER_ADDRESSAUTODETECT
+          value: "false"
+        - name: CORE_PEER_NETWORKID
+          value: dev
+        - name: CORE_PEER_LOCALMSPID
+          value: Store1MSP
+        - name: CORE_PEER_MSPCONFIGPATH
+          value: /shared/crypto-config/peerOrganizations/store1.mymarket.com/peers/peer0.store1.mymarket.com/msp/
+        - name: CORE_LOGGING_LEVEL
+          value: debug
+        - name: FABRIC_CFG_PATH
+          value: /etc/hyperledger/fabric
+        - name: GODEBUG
+          value: "netdns=go"
+        volumeMounts:
+        - mountPath: /shared
+          name: sharedvolume

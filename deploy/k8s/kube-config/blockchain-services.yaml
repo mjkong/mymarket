@@ -1,0 +1,158 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mymarket-ca
+  labels:
+    run: mymarket-ca
+spec:
+  type: NodePort
+  selector:
+    name: mymarket-ca
+  ports:
+  - protocol: TCP
+    nodePort: 30054
+    targetPort: 7054
+    port: 30054
+    name: grpc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: store1-ca
+  labels:
+    run: store1-ca
+spec:
+  type: NodePort
+  selector:
+    name: store1-ca
+  ports:
+  - protocol: TCP
+    nodePort: 30154
+    targetPort: 7054
+    port: 30154
+    name: grpc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: store2-ca
+  labels:
+    run: store2-ca
+spec:
+  type: NodePort
+  selector:
+    name: store2-ca
+  ports:
+  - protocol: TCP
+    nodePort: 30254
+    targetPort: 7054
+    port: 30254
+    name: grpc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mymarket-orderer
+  labels:
+    run: mymarket-orderer
+spec:
+  type: NodePort
+  selector:
+    name: orderer
+  ports:
+  - protocol: TCP
+    nodePort: 31010
+    targetPort: 31010
+    port: 31010
+    name: grpc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: store1peer0
+  labels:
+    run: store1peer0
+spec:
+  type: NodePort
+  selector:
+    name: store1peer0
+  ports:
+  - protocol: TCP
+    nodePort: 30110
+    targetPort: 30110
+    port: 30110
+    name: grpc
+  - protocol: TCP
+    nodePort: 30111
+    targetPort: 30111
+    port: 30111
+    name: events
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: store1peer1
+  labels:
+    run: store1peer1
+spec:
+  type: NodePort
+  selector:
+    name: store1peer1
+  ports:
+  - protocol: TCP
+    nodePort: 30120
+    targetPort: 30120
+    port: 30120
+    name: grpc
+  - protocol: TCP
+    nodePort: 30121
+    targetPort: 30121
+    port: 30121
+    name: events
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: store2peer0
+  labels:
+    run: store2peer0
+spec:
+  type: NodePort
+  selector:
+    name: store2peer0
+  ports:
+  - protocol: TCP
+    nodePort: 30210
+    targetPort: 30210
+    port: 30210
+    name: grpc
+  - protocol: TCP
+    nodePort: 30211
+    targetPort: 30211
+    port: 30211
+    name: events
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: store2peer1
+  labels:
+    run: store2peer1
+spec:
+  type: NodePort
+  selector:
+    name: store2peer1
+  ports:
+  - protocol: TCP
+    nodePort: 30220
+    targetPort: 30220
+    port: 30220
+    name: grpc
+  - protocol: TCP
+    nodePort: 30221
+    targetPort: 30221
+    port: 30221
+    name: events

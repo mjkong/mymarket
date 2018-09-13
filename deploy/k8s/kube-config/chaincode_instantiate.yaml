@@ -1,0 +1,42 @@
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: chaincodeinstantiate
+spec:
+  backoffLimit: 1
+  template:
+    metadata:
+      name: chaincodeinstantiate
+    spec:
+      restartPolicy: "Never"
+      volumes:
+      - name: sharedvolume
+        persistentVolumeClaim:
+          claimName: shared-pvc
+
+      containers:
+      - name: chaincodeinstantiate
+        image: hyperledger/fabric-tools:1.2.0
+        imagePullPolicy: Always
+        command: ["sh", "-c", "peer chaincode instantiate -o mymarket-orderer:31010 -C ${CHANNEL_NAME} -n ${CHAINCODE_NAME} -v ${CHAINCODE_VERSION} -c '{\"Args\":[]}' -P \"OR ('Store1MSP.peer','Store2MSP.peer')\""]
+        env:
+        - name: CHANNEL_NAME
+          value: mymarketchannel
+        - name: CHAINCODE_NAME
+          value: "mycc"
+        - name: CHAINCODE_VERSION
+          value: "1.0"
+        - name: FABRIC_CFG_PATH
+          value: /etc/hyperledger/fabric
+        - name: CORE_PEER_MSPCONFIGPATH
+          value: /shared/crypto-config/peerOrganizations/store1.mymarket.com/users/Admin@store1.mymarket.com/msp
+        - name: CORE_PEER_LOCALMSPID
+          value: Store1MSP
+        - name: CORE_PEER_ADDRESS
+          value: store1peer0:30110
+        - name: GODEBUG
+          value: "netdns=go"
+        volumeMounts:
+        - mountPath: /shared
+          name: sharedvolume

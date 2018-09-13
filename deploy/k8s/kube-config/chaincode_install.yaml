@@ -1,0 +1,105 @@
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: chaincodeinstall
+spec:
+  backoffLimit: 1
+  template:
+    metadata:
+      name: chaincodeinstall
+    spec:
+      restartPolicy: "Never"
+      volumes:
+      - name: sharedvolume
+        persistentVolumeClaim:
+          claimName: shared-pvc
+      containers:
+      - name: chaincodeinstall1
+        image: hyperledger/fabric-tools:1.2.0
+        imagePullPolicy: Always
+        command: ["sh", "-c", "echo $GOPATH; cp -r /shared/artifacts/chaincode $GOPATH/src/; ls $GOPATH/src; peer chaincode install -n ${CHAINCODE_NAME} -v ${CHAINCODE_VERSION} -p mymarket/"]
+        env:
+        - name: CHAINCODE_NAME
+          value: "mycc"
+        - name: CHAINCODE_VERSION
+          value: "1.0"
+        - name: FABRIC_CFG_PATH
+          value: /etc/hyperledger/fabric
+        - name: CORE_PEER_MSPCONFIGPATH
+          value: /shared/crypto-config/peerOrganizations/store1.mymarket.com/users/Admin@store1.mymarket.com/msp
+        - name: CORE_PEER_LOCALMSPID
+          value: Store1MSP 
+        - name: CORE_PEER_ADDRESS
+          value: store1peer0:30110
+        - name: GODEBUG
+          value: "netdns=go"
+        volumeMounts:
+        - mountPath: /shared
+          name: sharedvolume
+      - name: chaincodeinstall2
+        image: hyperledger/fabric-tools:1.2.0
+        imagePullPolicy: Always
+        command: ["sh", "-c", "echo $GOPATH; cp -r /shared/artifacts/chaincode $GOPATH/src/; ls $GOPATH/src; peer chaincode install -n ${CHAINCODE_NAME} -v ${CHAINCODE_VERSION} -p mymarket/"]
+        env:
+        - name: CHAINCODE_NAME
+          value: "mycc"
+        - name: CHAINCODE_VERSION
+          value: "1.0"
+        - name: FABRIC_CFG_PATH
+          value: /etc/hyperledger/fabric
+        - name: CORE_PEER_MSPCONFIGPATH
+          value: /shared/crypto-config/peerOrganizations/store1.mymarket.com/users/Admin@store1.mymarket.com/msp
+        - name: CORE_PEER_LOCALMSPID
+          value: Store1MSP 
+        - name: CORE_PEER_ADDRESS
+          value: store1peer1:30120
+        - name: GODEBUG
+          value: "netdns=go"
+        volumeMounts:
+        - mountPath: /shared
+          name: sharedvolume
+      - name: chaincodeinstall3
+        image: hyperledger/fabric-tools:1.2.0
+        imagePullPolicy: Always
+        command: ["sh", "-c", "echo $GOPATH; cp -r /shared/artifacts/chaincode $GOPATH/src/; ls $GOPATH/src; peer chaincode install -n ${CHAINCODE_NAME} -v ${CHAINCODE_VERSION} -p mymarket/"]
+        env:
+        - name: CHAINCODE_NAME
+          value: "mycc"
+        - name: CHAINCODE_VERSION
+          value: "1.0"
+        - name: FABRIC_CFG_PATH
+          value: /etc/hyperledger/fabric
+        - name: CORE_PEER_MSPCONFIGPATH
+          value: /shared/crypto-config/peerOrganizations/store2.mymarket.com/users/Admin@store2.mymarket.com/msp
+        - name: CORE_PEER_LOCALMSPID
+          value: Store2MSP 
+        - name: CORE_PEER_ADDRESS
+          value: store2peer0:30210
+        - name: GODEBUG
+          value: "netdns=go"
+        volumeMounts:
+        - mountPath: /shared
+          name: sharedvolume
+      - name: chaincodeinstall4
+        image: hyperledger/fabric-tools:1.2.0
+        imagePullPolicy: Always
+        command: ["sh", "-c", "echo $GOPATH; cp -r /shared/artifacts/chaincode $GOPATH/src/; ls $GOPATH/src; peer chaincode install -n ${CHAINCODE_NAME} -v ${CHAINCODE_VERSION} -p mymarket/"]
+        env:
+        - name: CHAINCODE_NAME
+          value: "mycc"
+        - name: CHAINCODE_VERSION
+          value: "1.0"
+        - name: FABRIC_CFG_PATH
+          value: /etc/hyperledger/fabric
+        - name: CORE_PEER_MSPCONFIGPATH
+          value: /shared/crypto-config/peerOrganizations/store2.mymarket.com/users/Admin@store2.mymarket.com/msp
+        - name: CORE_PEER_LOCALMSPID
+          value: Store2MSP 
+        - name: CORE_PEER_ADDRESS
+          value: store2peer1:30220
+        - name: GODEBUG
+          value: "netdns=go"
+        volumeMounts:
+        - mountPath: /shared
+          name: sharedvolume
