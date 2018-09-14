@@ -13,7 +13,17 @@ echo $KUBECONFIG_FOLDER
 
 
 echo "Create Volume"
-#kubectl create -f ${KUBECONFIG_FOLDER}/createVolume.yaml
+if [ "$(kubectl get pvc | grep shared-pvc | awk '{print $2}')" != "Bound" ]; then
+    kubectl create -f ${KUBECONFIG_FOLDER}/createVolume.yaml
+
+    if [ "kubectl get pvc | grep shared-pvc | awk '{print $3}'" != "shared-pv" ]; then
+        echo "Success creating Persistant Volume"
+    else
+        echo "Failed to create Persistant Volume"
+    fi
+else
+    echo "The Persistant Volume exists, not creating again"
+fi 
 
 echo "Create artifacts"
 kubectl create -f ${KUBECONFIG_FOLDER}/createArtifactsJob.yaml
@@ -44,7 +54,7 @@ while [ "${JOBSTATUS}" != "1" ]; do
     echo "Waiting for copyartifacts job to complete"
     sleep 1;
     PODSTATUS=$(kubectl get pods | grep "copyartifacts" | awk '{print $3}')
-        if [ "${PODSTATUS}" == "Error" ]; then
+        if [ "${PODSTATUS}" = "Error" ]; then
             echo "There is an error in copyartifacts job. Please check logs."
             exit 1
         fi
