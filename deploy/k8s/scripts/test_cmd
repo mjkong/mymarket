@@ -1,0 +1,4 @@
+peer chaincode query -C mymarketchannel -n mycc -c '{"Args":["getProductList",""]}'
+
+
+peer chaincode invoke -o mymarket-orderer:31010 -C mymarketchannel -n mycc -c '{"Args":["registProducts","mjcar","1","mj"]}'

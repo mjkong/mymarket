@@ -19,3 +19,4 @@ kubectl delete -f ${KUBECONFIG_FOLDER}/peersDeployment.yaml
 kubectl delete -f ${KUBECONFIG_FOLDER}/blockchain-services.yaml
 kubectl delete -f ${KUBECONFIG_FOLDER}/generateArtifactsJob.yaml
 kubectl delete -f ${KUBECONFIG_FOLDER}/createArtifactsJob.yaml
+kubectl delete -f ${KUBECONFIG_FOLDER}/createVolume.yaml

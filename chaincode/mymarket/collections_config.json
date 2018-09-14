@@ -1,0 +1,16 @@
+[
+ {
+         "name": "collectionProducts",
+         "policy": "OR('Store1MSP.member', 'Store2MSP.member')",
+         "requiredPeerCount": 0,
+         "maxPeerCount": 3,
+         "blockToLive":1000000
+},
+ {
+         "name": "collectionProductPrivateDetails",
+         "policy": "OR('Store1MSP.member')",
+         "requiredPeerCount": 0,
+         "maxPeerCount": 3,
+         "blockToLive":1000000
+ }
+]

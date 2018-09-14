@@ -25,6 +25,11 @@ type MymarketProduct struct {
 	Owner string `json:"owner"`
 }
 
+type MymarketProductDetail struct {
+	Name	string	`json:"name"`
+	Price	int	`json:"price"`
+}
+
 type ProductKey struct {
 	Key string
 	Idx int
@@ -61,6 +66,8 @@ func (t *SimpleChaincode) Invoke(stub shim.ChaincodeStubInterface) pb.Response {
 		return t.getProductList(stub, args)
 	} else if function == "getProduct" {
 		return t.getProduct(stub, args)
+	} else if function == "getProductDetail" {
+		return t.getProductDetail(stub, args)
 	} else if function == "transferOwner" {
 		return t.transferOwner(stub, args)
 	} else if function == "registCategory" {
@@ -156,19 +163,32 @@ func (t *SimpleChaincode) getCategories(stub shim.ChaincodeStubInterface, args [
 
 func (t *SimpleChaincode) registProducts(stub shim.ChaincodeStubInterface, args []string) pb.Response {
 
+	var price int = 0
+
 	var newProductKey = ProductKey{}
 	json.Unmarshal(generateKeyValue(stub, "latestKey"), &newProductKey)
 
 	var product = MymarketProduct{Name: args[0], Qty: args[1], Owner: args[2]}
 	productAsBytes, _ := json.Marshal(product)
 
+	if len(args[3]) == 0 {
+		return shim.Error("Price argument must be a non-empty string")
+	}
+
 	newKeyIdx := strconv.Itoa(newProductKey.Idx)
 	var newKeyString = newProductKey.Key + newKeyIdx
 	fmt.Println("New key is " + newKeyString)
 	stub.PutState(newKeyString, productAsBytes)
 
+
+	price,_ = strconv.Atoi(args[3])
+	var productDetail = MymarketProductDetail{Name: args[0], Price: price}
+	productDetailAsBytes, _ := json.Marshal(productDetail)
+	stub.PutPrivateData("collectionProductPrivateDetails", newKeyString, productDetailAsBytes)
+
 	newProductKeyAsBytes, _ := json.Marshal(newProductKey)
 	stub.PutState("latestKey", newProductKeyAsBytes)
+
 
 	return shim.Success(nil)
 }
@@ -181,8 +201,31 @@ func (t *SimpleChaincode) getProduct(stub shim.ChaincodeStubInterface, args []st
 
 	fmt.Println("Key : " + product.Name + ", Qty : " + product.Qty + " , Owner : " + product.Owner)
 
-	return shim.Success(nil)
+	return shim.Success(productAsBytes)
 
+}
+
+func (t *SimpleChaincode) getProductDetail(stub shim.ChaincodeStubInterface, args []string) pb.Response {
+	var jsonResp string
+
+	var productKey = args[0]
+	productDetailAsBytes, err := stub.GetPrivateData("collectionProductPrivateDetails", productKey)
+
+	if err != nil {
+                jsonResp = "{\"Error\":\"Failed to get private details for " + productKey + ": " + err.Error() + "\"}"
+                return shim.Error(jsonResp)
+        } else if productDetailAsBytes == nil {
+                jsonResp = "{\"Error\":\"Marble private details does not exist: " + productKey + "\"}"
+                return shim.Error(jsonResp)
+        }
+
+//		productDetail := MymarketProductDetail{}
+//		json.Unmarshal(productDetailAsBytes, &productDetail)
+//	
+//		priceStr,_ := strconv.Itoa(productDetail.Price)
+//		fmt.Println("Key : " + productDetail.Name + ", Price : " + priceStr)
+
+	return shim.Success(productDetailAsBytes)
 }
 
 func (t *SimpleChaincode) getProductList(stub shim.ChaincodeStubInterface, args []string) pb.Response {
