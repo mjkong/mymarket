@@ -2,7 +2,25 @@
 
 > 개발환경은 우분투 16.04 기반으로 테스트하여 작성하였습니다.
 
-
+도메인 정보
+* Headquater
+   * mymarket.com
+* Store1
+   * store1.mymarket.com
+* Store2
+   * store2.mymarket.com
+   
+Ordering Service
+* OrdererType : kafka
+* Orderer
+   * orderer0.mymarket.com
+   * orderer1.mymarket.com
+   * orderer2.mymarket.com
+* kafka broker
+   * kafka0
+   * kafka1
+   * kafka2
+   * kafka3
 
 ![mymarket_architecture](./images/mymarket1.png)
 
