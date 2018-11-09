@@ -4,6 +4,9 @@
 
 ![mymarket_architecture](./images/mymarket1.png)
 
+아래 그림은 mymarket 실행을 위한 컨테이너 리스트 입니다.
+![mymarket_containers](./images/mymarket2.png)
+
 ### 사전 개발 환경 준비
 * Docker
     * 17.06.2-ce 이상
