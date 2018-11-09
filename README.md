@@ -53,7 +53,8 @@ CA (멤버쉽 서비스)
 
 ### VM 네트워크 설정
 이 항목은 Fabric Network를 멀티노드로 구성하기 위해서 필요합니다.(현재는 Docker swarm으로 설명하고 있으며, 다른 방법으로 멀티 노드 구성은 업데이트 예정)
-단일 노드로 구성 할 경우 네트워크 설정 항목은 skip 합니다.
+단일 노드로 구성 할 경우 네트워크 설정 항목은 다음의 ```docker network```만 생성합니다.
+<pre><code>docker network create my-net</pre></code>
 
 #### Docker swarm 네트워크 설정
 
