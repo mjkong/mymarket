@@ -21,7 +21,15 @@ Ordering Service
    * kafka1
    * kafka2
    * kafka3
-
+   
+CA (멤버쉽 서비스)
+* Headquater
+   * ca.mymarket.com
+* Store1
+   * ca.store1.mymarket.com
+* Store2
+   * ca.store2.mymarket.com
+   
 ![mymarket_architecture](./images/mymarket1.png)
 
 아래 그림은 mymarket 실행을 위한 컨테이너 리스트 입니다.
