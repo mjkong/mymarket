@@ -2,6 +2,8 @@
 
 > 개발환경은 우분투 16.04 기반으로 테스트하여 작성하였습니다.
 
+![mymarket_architecture](./images/mymarket1.png)
+
 ### 사전 개발 환경 준비
 * Docker
     * 17.06.2-ce 이상
