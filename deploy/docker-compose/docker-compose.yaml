@@ -2,6 +2,8 @@ version: '2'
 
 networks:
   mymarket:
+    external:
+      name: my-net
 
 services:
 
@@ -451,7 +453,7 @@ services:
     environment:
       - GOPATH=/opt/gopath
       - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
-      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=mymarket_mymarket
+      #- CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=mymarket_mymarket
       - CORE_LOGGING_LEVEL=DEBUG
       #- CORE_LOGGING_LEVEL=INFO
       - CORE_PEER_ID=cli
