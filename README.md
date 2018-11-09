@@ -153,3 +153,113 @@ docker-compose up -d
 정상적으로 컨테이너가 실행되었으면 19개의 컨테이너가 실행됩니다.
 
 ### 채널 생성 및 Peer join
+Fabric Network 설정을 위해서 ```cli``` 컨테이너에 접속합니다.
+<pre><code>docker exec -it cli bash</pre></code>
+
+#### 채널 생성
+다음의 명령을 통해서 채널을 생성합니다.
+<pre><code>
+export CHANNEL_NAME=mymarketchannel
+peer channel create -o orderer0.mymarket.com:7050 -c $CHANNEL_NAME -f ./channel-artifacts/channel.tx --tls $CORE_PEER_TLS_ENABLED --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/mymarket.com/orderers/orderer0.mymarket.com/msp/tlscacerts/tlsca.mymarket.com-cert.pem
+</pre></code>
+
+#### Peer join to channel
+* peer0.store1
+<pre><code>
+CORE_PEER_LOCALMSPID=Store1MSP
+CORE_PEER_ADDRESS=peer0.store1.mymarket.com:7051
+CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/store1.mymarket.com/peers/peer0.store1.mymarket.com/tls/ca.crt
+CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/store1.mymarket.com/users/Admin@store1.mymarket.com/msp
+peer channel join -b $CHANNEL_NAME.block
+</pre></code>
+
+* peer1.store1
+<pre><code>
+CORE_PEER_LOCALMSPID=Store1MSP
+CORE_PEER_ADDRESS=peer1.store1.mymarket.com:7051
+CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/store1.mymarket.com/peers/peer1.store1.mymarket.com/tls/ca.crt
+CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/store1.mymarket.com/users/Admin@store1.mymarket.com/msp
+peer channel join -b $CHANNEL_NAME.block
+</pre></code>
+
+* peer0.store2
+<pre><code>
+CORE_PEER_LOCALMSPID=Store2MSP
+CORE_PEER_ADDRESS=peer0.store2.mymarket.com:7051
+CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/store2.mymarket.com/peers/peer0.store2.mymarket.com/tls/ca.crt
+CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/store2.mymarket.com/users/Admin@store2.mymarket.com/msp
+peer channel join -b $CHANNEL_NAME.block
+</pre></code>
+
+* peer1.store2
+<pre><code>
+CORE_PEER_LOCALMSPID=Store2MSP
+CORE_PEER_ADDRESS=peer1.store2.mymarket.com:7051
+CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/store2.mymarket.com/peers/peer1.store2.mymarket.com/tls/ca.crt
+CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/store2.mymarket.com/users/Admin@store2.mymarket.com/msp
+peer channel join -b $CHANNEL_NAME.block
+</pre></code>
+
+
+#### AnchorPeer update
+* peer0.store1
+<pre><code>
+CORE_PEER_LOCALMSPID=Store1MSP
+CORE_PEER_ADDRESS=peer0.store1.mymarket.com:7051
+CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/store1.mymarket.com/peers/peer0.store1.mymarket.com/tls/ca.crt
+CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/store1.mymarket.com/users/Admin@store1.mymarket.com/msp
+peer channel update -o orderer0.mymarket.com:7050 -c $CHANNEL_NAME -f ./channel-artifacts/Store1MSPanchors.tx --tls $CORE_PEER_TLS_ENABLED --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/mymarket.com/orderers/orderer0.mymarket.com/msp/tlscacerts/tlsca.mymarket.com-cert.pem
+</pre></code>
+
+* peer0.store2
+<pre><code>
+CORE_PEER_LOCALMSPID=Store2MSP
+CORE_PEER_ADDRESS=peer0.store2.mymarket.com:7051
+CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/store2.mymarket.com/peers/peer0.store2.mymarket.com/tls/ca.crt
+CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/store2.mymarket.com/users/Admin@store2.mymarket.com/msp
+peer channel update -o orderer0.mymarket.com:7050 -c $CHANNEL_NAME -f ./channel-artifacts/Store2MSPanchors.tx --tls $CORE_PEER_TLS_ENABLED --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/mymarket.com/orderers/orderer0.mymarket.com/msp/tlscacerts/tlsca.mymarket.com-cert.pem
+</pre></code>
+
+### 체인코드 설치 및 초기화
+
+#### 체인코드 설치
+* peer0.store1
+<pre><code>
+CORE_PEER_LOCALMSPID=Store1MSP
+CORE_PEER_ADDRESS=peer0.store1.mymarket.com:7051
+CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/store1.mymarket.com/peers/peer0.store1.mymarket.com/tls/ca.crt
+CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/store1.mymarket.com/users/Admin@store1.mymarket.com/msp
+peer chaincode install -n marketcc -v 0 -l golang -p github.com/chaincode/mymarket
+</pre></code>
+
+* peer1.store1
+<pre><code>
+CORE_PEER_LOCALMSPID=Store1MSP
+CORE_PEER_ADDRESS=peer1.store1.mymarket.com:7051
+CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/store1.mymarket.com/peers/peer1.store1.mymarket.com/tls/ca.crt
+CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/store1.mymarket.com/users/Admin@store1.mymarket.com/msp
+peer chaincode install -n marketcc -v 0 -l golang -p github.com/chaincode/mymarket
+</pre></code>
+
+* peer0.store2
+<pre><code>
+CORE_PEER_LOCALMSPID=Store2MSP
+CORE_PEER_ADDRESS=peer0.store2.mymarket.com:7051
+CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/store2.mymarket.com/peers/peer0.store2.mymarket.com/tls/ca.crt
+CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/store2.mymarket.com/users/Admin@store2.mymarket.com/msp
+peer chaincode install -n marketcc -v 0 -l golang -p github.com/chaincode/mymarket
+</pre></code>
+
+* peer1.store2
+<pre><code>
+CORE_PEER_LOCALMSPID=Store2MSP
+CORE_PEER_ADDRESS=peer1.store2.mymarket.com:7051
+CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/store2.mymarket.com/peers/peer1.store2.mymarket.com/tls/ca.crt
+CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/store2.mymarket.com/users/Admin@store2.mymarket.com/msp
+peer chaincode install -n marketcc -v 0 -l golang -p github.com/chaincode/mymarket
+</pre></code>
+
+#### 체인코드 초기화
+<pre><code>
+peer chaincode instantiate -o orderer0.mymarket.com:7050 --tls $CORE_PEER_TLS_ENABLED --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/mymarket.com/orderers/orderer0.mymarket.com/msp/tlscacerts/tlsca.mymarket.com-cert.pem -C $CHANNEL_NAME -n marketcc -l golang -v 1.0 -c '{"Args":[]}' -P "OR ('Store1MSP.peer','Store2MSP.peer')"
+</pre></code>
