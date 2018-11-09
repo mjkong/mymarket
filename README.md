@@ -261,5 +261,5 @@ peer chaincode install -n marketcc -v 0 -l golang -p github.com/chaincode/mymark
 
 #### 체인코드 초기화
 <pre><code>
-peer chaincode instantiate -o orderer0.mymarket.com:7050 --tls $CORE_PEER_TLS_ENABLED --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/mymarket.com/orderers/orderer0.mymarket.com/msp/tlscacerts/tlsca.mymarket.com-cert.pem -C $CHANNEL_NAME -n marketcc -l golang -v 1.0 -c '{"Args":[]}' -P "OR ('Store1MSP.peer','Store2MSP.peer')" --collections-config /opt/gopath/src/github.com/chaincode/mymarket/collections_config.json
+peer chaincode instantiate -o orderer0.mymarket.com:7050 --tls $CORE_PEER_TLS_ENABLED --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/mymarket.com/orderers/orderer0.mymarket.com/msp/tlscacerts/tlsca.mymarket.com-cert.pem -C $CHANNEL_NAME -n marketcc -l golang -v 0 -c '{"Args":[]}' -P "OR ('Store1MSP.peer','Store2MSP.peer')" --collections-config /opt/gopath/src/github.com/chaincode/mymarket/collections_config.json
 </pre></code>
