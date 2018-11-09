@@ -2,6 +2,8 @@
 
 > 개발환경은 우분투 16.04 기반으로 테스트하여 작성하였습니다.
 
+
+
 ![mymarket_architecture](./images/mymarket1.png)
 
 아래 그림은 mymarket 실행을 위한 컨테이너 리스트 입니다.
