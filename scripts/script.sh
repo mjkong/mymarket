@@ -6,7 +6,7 @@ TIMEOUT=$3
 ORDERER_CA=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/mymarket.com/orderers/orderer0.mymarket.com/msp/tlscacerts/tlsca.mymarket.com-cert.pem
 LANGUAGE="golang"
 #CC_SRC_PATH=github.com/chaincode/chaincode_example02/go
-CC_SRC_PATH=github.com/chaincode/mymarket
+CC_SRC_PATH=github.com/chaincode/mymarket/go
 
 . ./scripts/utils.sh
 
