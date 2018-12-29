@@ -44,11 +44,7 @@ services:
   ca.mymarket.com:
     image: hyperledger/fabric-ca
     environment:
-<<<<<<< HEAD
-#- CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=mymarket_mymarket
-=======
       #- CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=mymarket_mymarket
->>>>>>> bd9acd7f733dbe5efd341df64cb1115e75746db9
       - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
       - FABRIC_CA_SERVER_CA_NAME=ca.mymarket.com
       - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.mymarket.com-cert.pem
@@ -186,11 +182,7 @@ services:
     container_name: orderer0.mymarket.com
     image: hyperledger/fabric-orderer
     environment:
-<<<<<<< HEAD
-#- CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=mymarket_mymarket
-=======
       #- CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=mymarket_mymarket
->>>>>>> bd9acd7f733dbe5efd341df64cb1115e75746db9
       - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
       - ORDERER_GENERAL_LOGLEVEL=debug
       - ORDERER_GENERAL_TLS_ENABLED=true
@@ -227,11 +219,7 @@ services:
     container_name: orderer1.mymarket.com
     image: hyperledger/fabric-orderer
     environment:
-<<<<<<< HEAD
-#- CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=mymarket_mymarket
-=======
       #- CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=mymarket_mymarket
->>>>>>> bd9acd7f733dbe5efd341df64cb1115e75746db9
       - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
       - ORDERER_GENERAL_LOGLEVEL=debug
       - ORDERER_GENERAL_TLS_ENABLED=true
@@ -269,11 +257,7 @@ services:
     container_name: orderer2.mymarket.com
     image: hyperledger/fabric-orderer
     environment:
-<<<<<<< HEAD
-#- CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=mymarket_mymarket
-=======
       #- CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=mymarket_mymarket
->>>>>>> bd9acd7f733dbe5efd341df64cb1115e75746db9
       - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
       - ORDERER_GENERAL_LOGLEVEL=debug
       - ORDERER_GENERAL_TLS_ENABLED=true
@@ -311,11 +295,7 @@ services:
     image: hyperledger/fabric-peer
     environment:
       - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
-<<<<<<< HEAD
-#- CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=mymarket_mymarket
-=======
       #- CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=mymarket_mymarket
->>>>>>> bd9acd7f733dbe5efd341df64cb1115e75746db9
       - CORE_PEER_ADDRESSAUTODETECT=true
       - CORE_LOGGING_LEVEL=DEBUG
       - CORE_PEER_NETWORKID=dev
@@ -349,11 +329,7 @@ services:
     image: hyperledger/fabric-peer
     environment:
       - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
-<<<<<<< HEAD
-#- CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=mymarket_mymarket
-=======
       #- CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=mymarket_mymarket
->>>>>>> bd9acd7f733dbe5efd341df64cb1115e75746db9
       - CORE_PEER_ADDRESSAUTODETECT=true
       - CORE_LOGGING_LEVEL=DEBUG
       - CORE_PEER_NETWORKID=dev
@@ -421,11 +397,7 @@ services:
     image: hyperledger/fabric-peer
     environment:
       - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
-<<<<<<< HEAD
-#- CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=mymarket_mymarket
-=======
       #- CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=mymarket_mymarket
->>>>>>> bd9acd7f733dbe5efd341df64cb1115e75746db9
       - CORE_PEER_ADDRESSAUTODETECT=true
       - CORE_LOGGING_LEVEL=DEBUG
       - CORE_PEER_NETWORKID=dev
