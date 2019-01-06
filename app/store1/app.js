@@ -177,6 +177,8 @@ app.post("/transaction/product", (req,res) => {
       var sendPromise = channel.sendTransaction(request);
       promises.push(sendPromise);
 			
+
+      /*
 			let event_hub = fabric_client.newEventHub();
       event_hub.setPeerAddr(ca_config.event_url,{
           'pem': Buffer.from(peerserverCert).toString(),
@@ -207,7 +209,7 @@ app.post("/transaction/product", (req,res) => {
          });
        });
        promises.push(txPromise);
-
+*/
        return Promise.all(promises);
 		} else {
    		console.error('Failed to send Proposal or receive valid response. Response null or status is not 200. exiting...');
@@ -225,14 +227,14 @@ app.post("/transaction/product", (req,res) => {
     } else {
             console.error('Failed to order the transaction. Error code: ' + response.status);
     }
-
+/*
     if(results && results[1] && results[1].event_status === 'VALID') {
 						isValid = true;
             console.log('Successfully committed the change to the ledger by the peer');
     } else {
             console.log('Transaction failed to be committed to the ledger due to ::'+results[1].event_status);
     }
-		
+*/		
 		if(isSuccess && isValid){
 				return res.status(200).json("Successfully committed the change to the ledger by the peer");
 
