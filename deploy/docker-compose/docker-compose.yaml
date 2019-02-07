@@ -14,7 +14,7 @@ services:
       - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
       - FABRIC_CA_SERVER_CA_NAME=ca.store1.mymarket.com
       - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.store1.mymarket.com-cert.pem
-      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/b9d923766ce8b6b152ac34dcdc54b64918a282b92030e20e19099ccf790cd36c_sk
+      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/5e044e0ca856b2bef2c153181ec5e2f42b4fbeaf46eb989696be0fc62e638fc5_sk
     ports:
       - "17054:7054"
     command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
@@ -31,7 +31,7 @@ services:
       - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
       - FABRIC_CA_SERVER_CA_NAME=ca.store2.mymarket.com
       - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.store2.mymarket.com-cert.pem
-      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/d0f1e6f0fae57aae8a6080bf9b6c004cee92969ff2db823eb23a555f543ea743_sk
+      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/caa6ee881f56dd5894b6dedd9c63a732f46162f96ccf83f6d6aaa09da3ab1c7e_sk
     ports:
       - "27054:7054"
     command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
@@ -48,7 +48,7 @@ services:
       - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
       - FABRIC_CA_SERVER_CA_NAME=ca.mymarket.com
       - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.mymarket.com-cert.pem
-      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/3e19b8e3721c3d32b9ae02db45ae30d5674da85eadb84b3cc3c9a3a7aa3a658c_sk
+      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/af6e7afb73b388e5bd9ef426a9d50bd0a18737d1ed6d7625df8486c0cd4b1106_sk
     ports:
       - "7054:7054"
     command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
@@ -297,7 +297,7 @@ services:
       - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
       #- CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=mymarket_mymarket
       - CORE_PEER_ADDRESSAUTODETECT=true
-      - CORE_LOGGING_LEVEL=DEBUG
+      - FABRIC_LOGGING_SPEC=INFO
       - CORE_PEER_NETWORKID=dev
       - CORE_PEER_TLS_ENABLED=true
       # This disables mutual auth for gossip
@@ -331,7 +331,7 @@ services:
       - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
       #- CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=mymarket_mymarket
       - CORE_PEER_ADDRESSAUTODETECT=true
-      - CORE_LOGGING_LEVEL=DEBUG
+      - FABRIC_LOGGING_SPEC=INFO
       - CORE_PEER_NETWORKID=dev
       - CORE_PEER_TLS_ENABLED=true
       # This disables mutual auth for gossip
@@ -365,7 +365,7 @@ services:
       - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
       - CORE_VM_DOCKER_HOSTCOFIG_NETWORKMODE=mymarket_mymarket
       - CORE_PEER_ADDRESSAUTODETECT=true
-      - CORE_LOGGING_LEVEL=DEBUG
+      - FABRIC_LOGGING_SPEC=INFO
       - CORE_PEER_NETWORKID=dev
       - CORE_PEER_TLS_ENABLED=true
       # This disables mutual auth for gossip
@@ -399,7 +399,7 @@ services:
       - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
       #- CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=mymarket_mymarket
       - CORE_PEER_ADDRESSAUTODETECT=true
-      - CORE_LOGGING_LEVEL=DEBUG
+      - FABRIC_LOGGING_SPEC=INFO
       - CORE_PEER_NETWORKID=dev
       - CORE_PEER_TLS_ENABLED=true
       # This disables mutual auth for gossip
@@ -454,8 +454,7 @@ services:
       - GOPATH=/opt/gopath
       - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
       #- CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=mymarket_mymarket
-      - CORE_LOGGING_LEVEL=DEBUG
-      #- CORE_LOGGING_LEVEL=INFO
+      - FABRIC_LOGGING_SPEC=INFO
       - CORE_PEER_ID=cli
       - CORE_PEER_ADDRESS=peer0.store1.mymarket.com:7051
       - CORE_PEER_LOCALMSPID=Store1MSP
