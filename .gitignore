@@ -3,6 +3,7 @@
 .project
 *.bak
 app/mgmt/node_modules/
+app/mgmt/package-lock.json
 app/main/node_modules/
 app/main/package-lock.json
 app/main/hfc-key-store/
