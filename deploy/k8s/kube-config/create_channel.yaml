@@ -44,7 +44,7 @@ spec:
           value: Store1MSP
         - name: CORE_PEER_MSPCONFIGPATH
           value: /shared/crypto-config/peerOrganizations/store1.mymarket.com/peers/peer0.store1.mymarket.com/msp/
-        - name: CORE_LOGGING_LEVEL
+        - name: FABRIC_LOGGING_SPEC
           value: debug
         - name: FABRIC_CFG_PATH
           value: /etc/hyperledger/fabric

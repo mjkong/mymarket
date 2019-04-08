@@ -228,7 +228,7 @@ spec:
           value: Store1MSP
         - name: CORE_PEER_MSPCONFIGPATH
           value: /shared/crypto-config/peerOrganizations/store1.mymarket.com/peers/peer0.store1.mymarket.com/msp/
-        - name: CORE_LOGGING_LEVEL
+        - name: FABRIC_LOGGING_SPEC
           value: debug
         - name: CORE_LOGGING_PEER
           value: debug
@@ -313,7 +313,7 @@ spec:
           value: Store1MSP
         - name: CORE_PEER_MSPCONFIGPATH
           value: /shared/crypto-config/peerOrganizations/store1.mymarket.com/peers/peer1.store1.mymarket.com/msp/
-        - name: CORE_LOGGING_LEVEL
+        - name: FABRIC_LOGGING_SPEC
           value: debug
         - name: CORE_LOGGING_PEER
           value: debug
@@ -398,7 +398,7 @@ spec:
           value: Store2MSP
         - name: CORE_PEER_MSPCONFIGPATH
           value: /shared/crypto-config/peerOrganizations/store2.mymarket.com/peers/peer0.store2.mymarket.com/msp/
-        - name: CORE_LOGGING_LEVEL
+        - name: FABRIC_LOGGING_SPEC
           value: debug
         - name: CORE_LOGGING_PEER
           value: debug
@@ -483,7 +483,7 @@ spec:
           value: Store2MSP
         - name: CORE_PEER_MSPCONFIGPATH
           value: /shared/crypto-config/peerOrganizations/store2.mymarket.com/peers/peer1.store2.mymarket.com/msp/
-        - name: CORE_LOGGING_LEVEL
+        - name: FABRIC_LOGGING_SPEC
           value: debug
         - name: CORE_LOGGING_PEER
           value: debug
