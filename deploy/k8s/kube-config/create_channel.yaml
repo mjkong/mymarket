@@ -16,7 +16,7 @@ spec:
           claimName: shared-pvc
       containers:
       - name: createchanneltx
-        image: hyperledger/fabric-tools:1.2.0
+        image: hyperledger/fabric-tools:1.4.0
         imagePullPolicy: Always
         command: ["sh", "-c", "cd /shared && pwd && ls && export FABRIC_CFG_PATH=$PWD && configtxgen -profile TwoOrgsChannel -outputCreateChannelTx ${CHANNEL_NAME}.tx -channelID ${CHANNEL_NAME} && touch /shared/status_channeltx_complete "]
         env:
@@ -28,7 +28,7 @@ spec:
         - mountPath: /shared
           name: sharedvolume
       - name: createchannel
-        image: hyperledger/fabric-peer:1.2.0
+        image: hyperledger/fabric-peer:1.4.0
         imagePullPolicy: Always
         command: ["sh", "-c", "while [ ! -f /shared/status_channeltx_complete ]; do echo Waiting for channeltx; sleep 2; done; peer channel create -o ${ORDERER_URL} -c ${CHANNEL_NAME} -f /shared/${CHANNEL_NAME}.tx && rm /shared/status_channeltx_complete && touch /shared/status_channelcreate_complete"]
         env:

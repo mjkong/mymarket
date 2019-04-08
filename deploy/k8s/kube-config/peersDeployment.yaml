@@ -16,7 +16,7 @@ spec:
           claimName: shared-pvc
       containers:
       - name: orderer
-        image: hyperledger/fabric-orderer:1.2.0
+        image: hyperledger/fabric-orderer:1.4.0
         command: ["sh", "-c", "sleep 5 && while [ ! -f /shared/status_configtxgen_complete ]; do echo Waiting for configtxgen; sleep 1; done; orderer"]
         env:
         - name: ORDERER_CFG_PATH
@@ -74,7 +74,7 @@ spec:
           claimName: shared-pvc
       containers:
       - name: ca
-        image: hyperledger/fabric-ca:1.2.0
+        image: hyperledger/fabric-ca:1.4.0
         command: ["sh", "-c", "sleep 1 && while [ ! -f /shared/status_configtxgen_complete ]; do echo Waiting for configtxgen; sleep 1; done; fabric-ca-server start -b admin:adminpw -d"]
         env:
         - name: FABRIC_CA_SERVER_CA_NAME
@@ -114,7 +114,7 @@ spec:
           claimName: shared-pvc
       containers:
       - name: ca
-        image: hyperledger/fabric-ca:1.2.0
+        image: hyperledger/fabric-ca:1.4.0
         command: ["sh", "-c", "sleep 1 && while [ ! -f /shared/status_configtxgen_complete ]; do echo Waiting for configtxgen; sleep 1; done; fabric-ca-server start -b admin:adminpw -d"]
         env:
         - name: FABRIC_CA_SERVER_CA_NAME
@@ -154,7 +154,7 @@ spec:
           claimName: shared-pvc
       containers:
       - name: ca
-        image: hyperledger/fabric-ca:1.2.0
+        image: hyperledger/fabric-ca:1.4.0
         command: ["sh", "-c", "sleep 1 && while [ ! -f /shared/status_configtxgen_complete ]; do echo Waiting for configtxgen; sleep 1; done; fabric-ca-server start -b admin:adminpw -d"]
         env:
         - name: FABRIC_CA_SERVER_CA_NAME
@@ -197,7 +197,7 @@ spec:
           path: /var/run/docker.sock
       containers:
       - name: store1peer0
-        image: hyperledger/fabric-peer:1.2.0
+        image: hyperledger/fabric-peer:1.4.0
         command: ["sh", "-c", "sleep 1 && while [ ! -f /shared/status_configtxgen_complete ]; do echo Waiting for configtxgen; sleep 1; done; peer node start"]
         env:
         - name: CORE_PEER_ADDRESSAUTODETECT
@@ -282,7 +282,7 @@ spec:
           path: /var/run/docker.sock
       containers:
       - name: store1peer1
-        image: hyperledger/fabric-peer:1.2.0
+        image: hyperledger/fabric-peer:1.4.0
         command: ["sh", "-c", "sleep 1 && while [ ! -f /shared/status_configtxgen_complete ]; do echo Waiting for configtxgen; sleep 1; done; peer node start"]
         env:
         - name: CORE_PEER_ADDRESSAUTODETECT
@@ -367,7 +367,7 @@ spec:
           path: /var/run/docker.sock
       containers:
       - name: store2peer0
-        image: hyperledger/fabric-peer:1.2.0
+        image: hyperledger/fabric-peer:1.4.0
         command: ["sh", "-c", "sleep 1 && while [ ! -f /shared/status_configtxgen_complete ]; do echo Waiting for configtxgen; sleep 1; done; peer node start"]
         env:
         - name: CORE_PEER_ADDRESSAUTODETECT
@@ -452,7 +452,7 @@ spec:
           path: /var/run/docker.sock
       containers:
       - name: store2peer1
-        image: hyperledger/fabric-peer:1.2.0
+        image: hyperledger/fabric-peer:1.4.0
         command: ["sh", "-c", "sleep 1 && while [ ! -f /shared/status_configtxgen_complete ]; do echo Waiting for configtxgen; sleep 1; done; peer node start"]
         env:
         - name: CORE_PEER_ADDRESSAUTODETECT
