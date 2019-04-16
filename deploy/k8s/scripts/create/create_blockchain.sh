@@ -49,7 +49,7 @@ kubectl cp ../artifacts $pod:/shared/
 
 echo "Waiting for 10 more seconds for copying artifacts to avoid any network delay"
 sleep 10
-JOBSTATUS=$(kubectl get jobs |grep "copyartifacts" |awk '{print $3}')
+JOBSTATUS=$(kubectl get jobs -l job-name=copyartifacts --output=jsonpath={.items..status.succeeded})
 while [ "${JOBSTATUS}" != "1" ]; do
     echo "Waiting for copyartifacts job to complete"
     sleep 1;
@@ -58,14 +58,14 @@ while [ "${JOBSTATUS}" != "1" ]; do
             echo "There is an error in copyartifacts job. Please check logs."
             exit 1
         fi
-    JOBSTATUS=$(kubectl get jobs |grep "copyartifacts" |awk '{print $3}')
+    JOBSTATUS=$(kubectl get jobs -l job-name=copyartifacts --output=jsonpath={.items..status.succeeded})
 done
 echo "Copy artifacts job completed"
 
 echo "Generate artifacts"
 kubectl create -f ${KUBECONFIG_FOLDER}/generateArtifactsJob.yaml
 
-JOBSTATUS=$(kubectl get jobs |grep utils|awk '{print $3}')
+JOBSTATUS=$(kubectl get jobs -l job-name=utils --output=jsonpath={.items..status.succeeded})
 while [ "${JOBSTATUS}" != "1" ]; do
     echo "Waiting for generateArtifacts job to complete"
     sleep 1;
@@ -76,7 +76,7 @@ while [ "${JOBSTATUS}" != "1" ]; do
             exit 1
     fi
     # UTILSLEFT=$(kubectl get pods | grep utils | awk '{print $2}')
-    JOBSTATUS=$(kubectl get jobs |grep utils|awk '{print $3}')
+    JOBSTATUS=$(kubectl get jobs -l job-name=utils --output=jsonpath={.items..status.succeeded})
 done
 
 
@@ -100,7 +100,7 @@ sleep 15
 echo "Create Channel"
 kubectl create -f ${KUBECONFIG_FOLDER}/create_channel.yaml
 
-JOBSTATUS=$(kubectl get jobs |grep createchannel |awk '{print $3}')
+JOBSTATUS=$(kubectl get jobs -l job-name=createchanneltx --output=jsonpath={.items..status.succeeded})
 while [ "${JOBSTATUS}" != "1" ]; do
     echo "Waiting for createchannel job to be completed"
     sleep 1;
@@ -108,7 +108,7 @@ while [ "${JOBSTATUS}" != "1" ]; do
         echo "Create Channel Failed"
         exit 1
     fi
-    JOBSTATUS=$(kubectl get jobs |grep createchannel |awk '{print $3}')
+    JOBSTATUS=$(kubectl get jobs -l job-name=createchanneltx --output=jsonpath={.items..status.succeeded})
 done
 echo "Create Channel Completed Successfully"
 #
@@ -116,7 +116,7 @@ echo "Create Channel Completed Successfully"
 echo "Join Channel"
 kubectl create -f ${KUBECONFIG_FOLDER}/join_channel.yaml
 
-JOBSTATUS=$(kubectl get jobs |grep joinchannel |awk '{print $3}')
+JOBSTATUS=$(kubectl get jobs -l job-name=joinchannel --output=jsonpath={.items..status.succeeded})
 while [ "${JOBSTATUS}" != "1" ]; do
     echo "Waiting for joinchannel job to be completed"
     sleep 1;
@@ -124,7 +124,7 @@ while [ "${JOBSTATUS}" != "1" ]; do
         echo "Join Channel Failed"
         exit 1
     fi
-    JOBSTATUS=$(kubectl get jobs |grep joinchannel |awk '{print $3}')
+    JOBSTATUS=$(kubectl get jobs -l job-name=joinchannel --output=jsonpath={.items..status.succeeded})
 done
 echo "Join Channel Completed Successfully"
 
@@ -132,7 +132,7 @@ echo "Join Channel Completed Successfully"
 echo -e "\nCreating installchaincode job"
 kubectl create -f ${KUBECONFIG_FOLDER}/chaincode_install.yaml
 
-JOBSTATUS=$(kubectl get jobs |grep chaincodeinstall |awk '{print $3}')
+JOBSTATUS=$(kubectl get jobs -l job-name=chaincodeinstall --output=jsonpath={.items..status.succeeded})
 while [ "${JOBSTATUS}" != "1" ]; do
     echo "Waiting for chaincodeinstall job to be completed"
     sleep 1;
@@ -140,7 +140,7 @@ while [ "${JOBSTATUS}" != "1" ]; do
         echo "Chaincode Install Failed"
         exit 1
     fi
-    JOBSTATUS=$(kubectl get jobs |grep chaincodeinstall |awk '{print $3}')
+    JOBSTATUS=$(kubectl get jobs -l job-name=chaincodeinstall --output=jsonpath={.items..status.succeeded})
 done
 echo "Chaincode Install Completed Successfully"
 
@@ -149,7 +149,7 @@ echo "Chaincode Install Completed Successfully"
 echo -e "\nCreating chaincodeinstantiate job"
 kubectl create -f ${KUBECONFIG_FOLDER}/chaincode_instantiate.yaml
 
-JOBSTATUS=$(kubectl get jobs |grep chaincodeinstantiate |awk '{print $3}')
+JOBSTATUS=$(kubectl get jobs -l job-name=chaincodeinstantiate --output=jsonpath={.items..status.succeeded})
 while [ "${JOBSTATUS}" != "1" ]; do
     echo "Waiting for chaincodeinstantiate job to be completed"
     sleep 1;
@@ -157,7 +157,7 @@ while [ "${JOBSTATUS}" != "1" ]; do
         echo "Chaincode Instantiation Failed"
         exit 1
     fi
-    JOBSTATUS=$(kubectl get jobs |grep chaincodeinstantiate |awk '{print $3}')
+    JOBSTATUS=$(kubectl get jobs -l job-name=chaincodeinstantiate --output=jsonpath={.items..status.succeeded})
 done
 echo "Chaincode Instantiation Completed Successfully"
 
