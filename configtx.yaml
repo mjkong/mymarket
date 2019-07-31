@@ -19,13 +19,13 @@ Organizations:
     - &OrdererOrg
         # DefaultOrg defines the organization which is used in the sampleconfig
         # of the fabric.git development environment
-        Name: MymarketHeadquater
+        Name: OrdererOrg
 
         # ID to load the MSP definition as
-        ID: HeadquaterMSP
+        ID: OrdererMSP
 
         # MSPDir is the filesystem path which contains the MSP configuration
-        MSPDir: crypto-config/ordererOrganizations/mymarket.com/msp
+        MSPDir: crypto-config/ordererOrganizations/example.com/msp
 
         # Policies defines the set of policies at this level of the config tree
         # For organization policies, their canonical path is usually
@@ -33,23 +33,23 @@ Organizations:
         Policies:
             Readers:
                 Type: Signature
-                Rule: "OR('HeadquaterMSP.member')"
+                Rule: "OR('OrdererMSP.member')"
             Writers:
                 Type: Signature
-                Rule: "OR('HeadquaterMSP.member')"
+                Rule: "OR('OrdererMSP.member')"
             Admins:
                 Type: Signature
-                Rule: "OR('HeadquaterMSP.admin')"
+                Rule: "OR('OrdererMSP.admin')"
 
-    - &Store1
+    - &Org1
         # DefaultOrg defines the organization which is used in the sampleconfig
         # of the fabric.git development environment
-        Name: Store1MSP
+        Name: Org1MSP
 
         # ID to load the MSP definition as
-        ID: Store1MSP
+        ID: Org1MSP
 
-        MSPDir: crypto-config/peerOrganizations/store1.mymarket.com/msp
+        MSPDir: crypto-config/peerOrganizations/org1.example.com/msp
 
         # Policies defines the set of policies at this level of the config tree
         # For organization policies, their canonical path is usually
@@ -57,31 +57,34 @@ Organizations:
         Policies:
             Readers:
                 Type: Signature
-                Rule: "OR('Store1MSP.admin', 'Store1MSP.peer', 'Store1MSP.client')"
+                Rule: "OR('Org1MSP.admin', 'Org1MSP.peer', 'Org1MSP.client')"
             Writers:
                 Type: Signature
-                Rule: "OR('Store1MSP.admin', 'Store1MSP.client')"
+                Rule: "OR('Org1MSP.admin', 'Org1MSP.client')"
             Admins:
                 Type: Signature
-                Rule: "OR('Store1MSP.admin')"
+                Rule: "OR('Org1MSP.admin')"
+            Endorsement:
+                Type: Signature
+                Rule: "OR('Org1MSP.peer')"
 
         # leave this flag set to true.
         AnchorPeers:
             # AnchorPeers defines the location of peers which can be used
             # for cross org gossip communication.  Note, this value is only
             # encoded in the genesis block in the Application section context
-            - Host: peer0.store1.mymarket.com
+            - Host: peer0.org1.example.com
               Port: 7051
 
-    - &Store2
+    - &Org2
         # DefaultOrg defines the organization which is used in the sampleconfig
         # of the fabric.git development environment
-        Name: Store2MSP
+        Name: Org2MSP
 
         # ID to load the MSP definition as
-        ID: Store2MSP
+        ID: Org2MSP
 
-        MSPDir: crypto-config/peerOrganizations/store2.mymarket.com/msp
+        MSPDir: crypto-config/peerOrganizations/org2.example.com/msp
 
         # Policies defines the set of policies at this level of the config tree
         # For organization policies, their canonical path is usually
@@ -89,20 +92,23 @@ Organizations:
         Policies:
             Readers:
                 Type: Signature
-                Rule: "OR('Store2MSP.admin', 'Store2MSP.peer', 'Store2MSP.client')"
+                Rule: "OR('Org2MSP.admin', 'Org2MSP.peer', 'Org2MSP.client')"
             Writers:
                 Type: Signature
-                Rule: "OR('Store2MSP.admin', 'Store2MSP.client')"
+                Rule: "OR('Org2MSP.admin', 'Org2MSP.client')"
             Admins:
                 Type: Signature
-                Rule: "OR('Store2MSP.admin')"
+                Rule: "OR('Org2MSP.admin')"
+            Endorsement:
+                Type: Signature
+                Rule: "OR('Org2MSP.peer')"
 
         AnchorPeers:
             # AnchorPeers defines the location of peers which can be used
             # for cross org gossip communication.  Note, this value is only
             # encoded in the genesis block in the Application section context
-            - Host: peer0.store2.mymarket.com
-              Port: 7051
+            - Host: peer0.org2.example.com
+              Port: 9051
 
 ################################################################################
 #
@@ -151,9 +157,13 @@ Capabilities:
     # used with prior release orderers.
     # Set the value of the capability to true to require it.
     Application: &ApplicationCapabilities
+        # V2.0 for Application enables the new non-backwards compatible
+        # features and fixes of fabric v2.0.
+        V2_0: true
         # V1.3 for Application enables the new non-backwards compatible
-        # features and fixes of fabric v1.3.
-        V1_3: true
+        # features and fixes of fabric v1.3 (note, this need not be set if
+        # later version capabilities are set)
+        V1_3: false
         # V1.2 for Application enables the new non-backwards compatible
         # features and fixes of fabric v1.2 (note, this need not be set if
         # later version capabilities are set)
@@ -190,6 +200,12 @@ Application: &ApplicationDefaults
         Admins:
             Type: ImplicitMeta
             Rule: "MAJORITY Admins"
+        LifecycleEndorsement:
+            Type: ImplicitMeta
+            Rule: "MAJORITY Endorsement"
+        Endorsement:
+            Type: ImplicitMeta
+            Rule: "MAJORITY Endorsement"
 
     Capabilities:
         <<: *ApplicationCapabilities
@@ -205,12 +221,36 @@ Orderer: &OrdererDefaults
 
     # Orderer Type: The orderer implementation to start
     # Available types are "solo" and "kafka"
-    OrdererType: kafka
+    OrdererType: etcdraft
+    EtcdRaft:
+        Consenters:
+        - Host: orderer.example.com
+          Port: 7050
+          ClientTLSCert: crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.crt
+          ServerTLSCert: crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.crt
+        - Host: orderer2.example.com
+          Port: 7050
+          ClientTLSCert: crypto-config/ordererOrganizations/example.com/orderers/orderer2.example.com/tls/server.crt
+          ServerTLSCert: crypto-config/ordererOrganizations/example.com/orderers/orderer2.example.com/tls/server.crt
+        - Host: orderer3.example.com
+          Port: 7050
+          ClientTLSCert: crypto-config/ordererOrganizations/example.com/orderers/orderer3.example.com/tls/server.crt
+          ServerTLSCert: crypto-config/ordererOrganizations/example.com/orderers/orderer3.example.com/tls/server.crt
+        - Host: orderer4.example.com
+          Port: 7050
+          ClientTLSCert: crypto-config/ordererOrganizations/example.com/orderers/orderer4.example.com/tls/server.crt
+          ServerTLSCert: crypto-config/ordererOrganizations/example.com/orderers/orderer4.example.com/tls/server.crt
+        - Host: orderer5.example.com
+          Port: 7050
+          ClientTLSCert: crypto-config/ordererOrganizations/example.com/orderers/orderer5.example.com/tls/server.crt
+          ServerTLSCert: crypto-config/ordererOrganizations/example.com/orderers/orderer5.example.com/tls/server.crt
 
     Addresses:
-        - orderer0.mymarket.com:7050
-        - orderer1.mymarket.com:7050
-        - orderer2.mymarket.com:7050
+        - orderer.example.com:7050
+        - orderer2.example.com:7050
+        - orderer3.example.com:7050
+        - orderer4.example.com:7050
+        - orderer5.example.com:7050
 
     # Batch Timeout: The amount of time to wait before creating a batch
     BatchTimeout: 2s
@@ -234,10 +274,7 @@ Orderer: &OrdererDefaults
         # Brokers: A list of Kafka brokers to which the orderer connects
         # NOTE: Use IP:port notation
         Brokers:
-            - kafka0:9092
-            - kafka1:9092
-            - kafka2:9092
-            - kafka3:9092
+            - 127.0.0.1:9092
 
     # Organizations is the list of orgs which are defined as participants on
     # the orderer side of the network
@@ -315,15 +352,16 @@ Profiles:
         Consortiums:
             SampleConsortium:
                 Organizations:
-                    - *Store1
-                    - *Store2
+                    - *Org1
+                    - *Org2
     TwoOrgsChannel:
         Consortium: SampleConsortium
+        <<: *ChannelDefaults
         Application:
             <<: *ApplicationDefaults
             Organizations:
-                - *Store1
-                - *Store2
+                - *Org1
+                - *Org2
             Capabilities:
                 <<: *ApplicationCapabilities
 
@@ -336,10 +374,7 @@ Profiles:
             OrdererType: kafka
             Kafka:
                 Brokers:
-                - kafka0:9092
-                - kafka1:9092
-                - kafka2:9092
-                - kafka3:9092
+                - kafka.example.com:9092
 
             Organizations:
             - *OrdererOrg
@@ -352,5 +387,55 @@ Profiles:
         Consortiums:
             SampleConsortium:
                 Organizations:
-                - *Store1
-                - *Store2
+                - *Org1
+                - *Org2
+
+    SampleMultiNodeEtcdRaft:
+        <<: *ChannelDefaults
+        Capabilities:
+            <<: *ChannelCapabilities
+        Orderer:
+            <<: *OrdererDefaults
+            OrdererType: etcdraft
+            EtcdRaft:
+                Consenters:
+                - Host: orderer.example.com
+                  Port: 7050
+                  ClientTLSCert: crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.crt
+                  ServerTLSCert: crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.crt
+                - Host: orderer2.example.com
+                  Port: 7050
+                  ClientTLSCert: crypto-config/ordererOrganizations/example.com/orderers/orderer2.example.com/tls/server.crt
+                  ServerTLSCert: crypto-config/ordererOrganizations/example.com/orderers/orderer2.example.com/tls/server.crt
+                - Host: orderer3.example.com
+                  Port: 7050
+                  ClientTLSCert: crypto-config/ordererOrganizations/example.com/orderers/orderer3.example.com/tls/server.crt
+                  ServerTLSCert: crypto-config/ordererOrganizations/example.com/orderers/orderer3.example.com/tls/server.crt
+                - Host: orderer4.example.com
+                  Port: 7050
+                  ClientTLSCert: crypto-config/ordererOrganizations/example.com/orderers/orderer4.example.com/tls/server.crt
+                  ServerTLSCert: crypto-config/ordererOrganizations/example.com/orderers/orderer4.example.com/tls/server.crt
+                - Host: orderer5.example.com
+                  Port: 7050
+                  ClientTLSCert: crypto-config/ordererOrganizations/example.com/orderers/orderer5.example.com/tls/server.crt
+                  ServerTLSCert: crypto-config/ordererOrganizations/example.com/orderers/orderer5.example.com/tls/server.crt
+            Addresses:
+                - orderer.example.com:7050
+                - orderer2.example.com:7050
+                - orderer3.example.com:7050
+                - orderer4.example.com:7050
+                - orderer5.example.com:7050
+
+            Organizations:
+            - *OrdererOrg
+            Capabilities:
+                <<: *OrdererCapabilities
+        Application:
+            <<: *ApplicationDefaults
+            Organizations:
+            - <<: *OrdererOrg
+        Consortiums:
+            SampleConsortium:
+                Organizations:
+                - *Org1
+                - *Org2
