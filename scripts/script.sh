@@ -3,7 +3,7 @@
 CHANNEL_NAME=$1
 DELAY=$2
 TIMEOUT=$3
-ORDERER_CA=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/mymarket.com/orderers/orderer0.mymarket.com/msp/tlscacerts/tlsca.mymarket.com-cert.pem
+ORDERER_CA=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/mymarket.com/orderers/orderer.mymarket.com/msp/tlscacerts/tlsca.mymarket.com-cert.pem
 LANGUAGE="golang"
 #CC_SRC_PATH=github.com/chaincode/chaincode_example02/go
 CC_SRC_PATH=github.com/chaincode/mymarket/go
@@ -15,12 +15,12 @@ createChannel() {
 
         if [ -z "$CORE_PEER_TLS_ENABLED" -o "$CORE_PEER_TLS_ENABLED" = "false" ]; then
                 set -x
-                peer channel create -o orderer0.mymarket.com:7050 -c $CHANNEL_NAME -f ./channel-artifacts/channel.tx &> log.txt
+                peer channel create -o orderer.mymarket.com:7050 -c $CHANNEL_NAME -f ./channel-artifacts/channel.tx &> log.txt
                 res=$?
                 set +x
         else
                 set -x
-                peer channel create -o orderer0.mymarket.com:7050 -c $CHANNEL_NAME -f ./channel-artifacts/channel.tx --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA &> log.txt
+                peer channel create -o orderer.mymarket.com:7050 -c $CHANNEL_NAME -f ./channel-artifacts/channel.tx --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA &> log.txt
                 res=$?
                 set +x
         fi
@@ -48,12 +48,12 @@ updateAnchorPeers() {
 
   if [ -z "$CORE_PEER_TLS_ENABLED" -o "$CORE_PEER_TLS_ENABLED" = "false" ]; then
                 set -x
-                peer channel update -o orderer0.mymarket.com:7050 -c $CHANNEL_NAME -f ./channel-artifacts/${CORE_PEER_LOCALMSPID}anchors.tx &> log.txt
+                peer channel update -o orderer.mymarket.com:7050 -c $CHANNEL_NAME -f ./channel-artifacts/${CORE_PEER_LOCALMSPID}anchors.tx &> log.txt
                 res=$?
                 set +x
   else
                 set -x
-                peer channel update -o orderer0.mymarket.com:7050 -c $CHANNEL_NAME -f ./channel-artifacts/${CORE_PEER_LOCALMSPID}anchors.tx --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA &>log.txt
+                peer channel update -o orderer.mymarket.com:7050 -c $CHANNEL_NAME -f ./channel-artifacts/${CORE_PEER_LOCALMSPID}anchors.tx --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA &>log.txt
                 res=$?
                 set +x
   fi
@@ -90,12 +90,12 @@ instantiateChaincode () {
         # lets supply it directly as we know it using the "-o" option
         if [ -z "$CORE_PEER_TLS_ENABLED" -o "$CORE_PEER_TLS_ENABLED" = "false" ]; then
                 set -x
-                peer chaincode instantiate -o orderer0.mymarket.com:7050 -C $CHANNEL_NAME -n marketcc -l ${LANGUAGE} -v ${VERSION} -c '{"Args":[]}' -P "OR  ('Store1MSP.peer','Store2MSP.peer')" &> log.txt
+                peer chaincode instantiate -o orderer.mymarket.com:7050 -C $CHANNEL_NAME -n marketcc -l ${LANGUAGE} -v ${VERSION} -c '{"Args":[]}' -P "AND ('Store1MSP.peer','Store2MSP.peer')" &> log.txt
                 res=$?
                 set +x
         else
                 set -x
-                peer chaincode instantiate -o orderer0.mymarket.com:7050 --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA -C $CHANNEL_NAME -n marketcc -l ${LANGUAGE} -v 1.0 -c '{"Args":[]}' -P "OR ('Store1MSP.peer','Store2MSP.peer')" &> log.txt
+                peer chaincode instantiate -o orderer.mymarket.com:7050 --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA -C $CHANNEL_NAME -n marketcc -l ${LANGUAGE} -v 1.0 -c '{"Args":[]}' -P "AND ('Store1MSP.peer','Store2MSP.peer')" &> log.txt
                 res=$?
                 set +x
         fi
