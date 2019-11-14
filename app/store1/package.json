@@ -8,6 +8,7 @@
         "start": "node app.js"
     },
     "dependencies": {
+        "express": "^4.17.1",
         "fabric-client": "~1.4.0",
         "fabric-network": "~1.4.0"
     },

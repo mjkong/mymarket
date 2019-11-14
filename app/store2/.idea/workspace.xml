@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="977b0a4e-b207-4197-80a3-fba2b7e9d4ad" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../store1/enrollAdmin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../store1/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../store1/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../store1/registerUser.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.app.js.swp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/ca_config.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/enrollAdmin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/registerUser.js" beforeDir="false" />
-    </list>
+    <list default="true" id="977b0a4e-b207-4197-80a3-fba2b7e9d4ad" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -83,8 +73,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/mjkong/fabric/sample/StoreManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="599">
-              <caret line="95" selection-start-line="95" selection-end-line="95" />
+            <state relative-caret-position="438">
+              <caret line="102" lean-forward="true" selection-start-line="102" selection-end-line="102" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#878#879#0" expanded="true" />
@@ -284,6 +274,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -424,12 +415,12 @@
       <option name="presentableId" value="Default" />
       <updated>1573646596035</updated>
       <workItem from="1573646599010" duration="8574000" />
-      <workItem from="1573721517039" duration="8053000" />
+      <workItem from="1573721517039" duration="8426000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16627000" />
+    <option name="totallyTimeSpent" value="17000000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="25" y="23" width="1895" height="1177" extended-state="0" />
@@ -542,8 +533,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/mjkong/fabric/sample/StoreManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="599">
-          <caret line="95" selection-start-line="95" selection-end-line="95" />
+        <state relative-caret-position="438">
+          <caret line="102" lean-forward="true" selection-start-line="102" selection-end-line="102" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#878#879#0" expanded="true" />
