@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="977b0a4e-b207-4197-80a3-fba2b7e9d4ad" name="Default Changelist" comment="" />
+    <list default="true" id="977b0a4e-b207-4197-80a3-fba2b7e9d4ad" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mjkong/fabric/sample/StoreManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mjkong/fabric/sample/StoreManager.java" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -73,13 +75,13 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/mjkong/fabric/sample/StoreManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="438">
-              <caret line="102" lean-forward="true" selection-start-line="102" selection-end-line="102" />
+            <state relative-caret-position="391">
+              <caret line="48" column="22" selection-start-line="48" selection-start-column="22" selection-end-line="48" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#878#879#0" expanded="true" />
                 <element signature="e#915#916#0" expanded="true" />
-                <element signature="e#5220#5221#0" expanded="true" />
+                <element signature="e#5338#5339#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -415,12 +417,12 @@
       <option name="presentableId" value="Default" />
       <updated>1573646596035</updated>
       <workItem from="1573646599010" duration="8574000" />
-      <workItem from="1573721517039" duration="8426000" />
+      <workItem from="1573721517039" duration="8844000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17000000" />
+    <option name="totallyTimeSpent" value="17418000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="25" y="23" width="1895" height="1177" extended-state="0" />
@@ -444,7 +446,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Build" order="7" weight="0.25253457" />
       <window_info anchor="bottom" id="sbt-shell-toolwindow" order="8" weight="0.3299539" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.19262673" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.31520736" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="Java Enterprise" order="12" />
@@ -533,13 +535,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/mjkong/fabric/sample/StoreManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="438">
-          <caret line="102" lean-forward="true" selection-start-line="102" selection-end-line="102" />
+        <state relative-caret-position="391">
+          <caret line="48" column="22" selection-start-line="48" selection-start-column="22" selection-end-line="48" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#878#879#0" expanded="true" />
             <element signature="e#915#916#0" expanded="true" />
-            <element signature="e#5220#5221#0" expanded="true" />
+            <element signature="e#5338#5339#0" expanded="true" />
           </folding>
         </state>
       </provider>
