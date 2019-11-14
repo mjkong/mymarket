@@ -181,7 +181,7 @@ func (t *SimpleChaincode) getProduct(stub shim.ChaincodeStubInterface, args []st
 
 	fmt.Println("Key : " + product.Name + ", Qty : " + product.Qty + " , Owner : " + product.Owner)
 
-	return shim.Success(nil)
+	return shim.Success(productAsBytes)
 
 }
 

@@ -1,0 +1,45 @@
+{
+    "name": "mymarket-store2",
+    "version": "1.0.0",
+    "client": {
+        "organization": "Store2", 
+        "connection": {
+            "timeout": {
+                "peer": {
+                    "endorser": "300"
+                }
+            }
+        }
+    },
+    "organizations": {
+        "Store2": {
+            "mspid": "Store2MSP",
+            "peers": [
+                "peer0.store2.mymarket.com",
+                "peer1.store2.mymarket.com"
+            ]
+        }
+    },
+    "peers": {
+        "peer0.store2.mymarket.com": {
+            "url": "grpcs://localhost:9051",
+            "tlsCACerts": {
+                "pem": "-----BEGIN CERTIFICATE-----\nMIICYzCCAgqgAwIBAgIRAMMBRGp67GAE09PU12LidhswCgYIKoZIzj0EAwIwfDEL\nMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBG\ncmFuY2lzY28xHDAaBgNVBAoTE3N0b3JlMi5teW1hcmtldC5jb20xIjAgBgNVBAMT\nGXRsc2NhLnN0b3JlMi5teW1hcmtldC5jb20wHhcNMTkxMTEyMTAzODAwWhcNMjkx\nMTA5MTAzODAwWjB8MQswCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEW\nMBQGA1UEBxMNU2FuIEZyYW5jaXNjbzEcMBoGA1UEChMTc3RvcmUyLm15bWFya2V0\nLmNvbTEiMCAGA1UEAxMZdGxzY2Euc3RvcmUyLm15bWFya2V0LmNvbTBZMBMGByqG\nSM49AgEGCCqGSM49AwEHA0IABFNL3r0NSnGTBKAACS3MKEMByE1iLsLfUeYi9/Zy\nH/p95Eg0XXzUtOhTcPYcMzHaa9Fl5ZEjA+1LPtiI0wTVDwujbTBrMA4GA1UdDwEB\n/wQEAwIBpjAdBgNVHSUEFjAUBggrBgEFBQcDAgYIKwYBBQUHAwEwDwYDVR0TAQH/\nBAUwAwEB/zApBgNVHQ4EIgQgH8l3B1Vkc8l303q6DsL4VD85C9YqKzAS2bGNtBAH\nCzswCgYIKoZIzj0EAwIDRwAwRAIgUbgjlh4/hZLz96v38GMP+WJ/7SyApNBTNkOh\nlcW/j2MCIGV/xAQaZhhq7QQqIIs1PEFOdfZ9/XiU+l8cBAv0EmsI\n-----END CERTIFICATE-----\n"
+            },
+            "grpcOptions": {
+                "ssl-target-name-override": "peer0.store2.mymarket.com",
+                "hostnameOverride": "peer0.store2.mymarket.com"
+            }
+        },
+        "peer1.store2.mymarket.com": {
+            "url": "grpcs://localhost:10051",
+            "tlsCACerts": {
+                "pem": "-----BEGIN CERTIFICATE-----\nMIICYzCCAgqgAwIBAgIRAMMBRGp67GAE09PU12LidhswCgYIKoZIzj0EAwIwfDEL\nMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBG\ncmFuY2lzY28xHDAaBgNVBAoTE3N0b3JlMi5teW1hcmtldC5jb20xIjAgBgNVBAMT\nGXRsc2NhLnN0b3JlMi5teW1hcmtldC5jb20wHhcNMTkxMTEyMTAzODAwWhcNMjkx\nMTA5MTAzODAwWjB8MQswCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEW\nMBQGA1UEBxMNU2FuIEZyYW5jaXNjbzEcMBoGA1UEChMTc3RvcmUyLm15bWFya2V0\nLmNvbTEiMCAGA1UEAxMZdGxzY2Euc3RvcmUyLm15bWFya2V0LmNvbTBZMBMGByqG\nSM49AgEGCCqGSM49AwEHA0IABFNL3r0NSnGTBKAACS3MKEMByE1iLsLfUeYi9/Zy\nH/p95Eg0XXzUtOhTcPYcMzHaa9Fl5ZEjA+1LPtiI0wTVDwujbTBrMA4GA1UdDwEB\n/wQEAwIBpjAdBgNVHSUEFjAUBggrBgEFBQcDAgYIKwYBBQUHAwEwDwYDVR0TAQH/\nBAUwAwEB/zApBgNVHQ4EIgQgH8l3B1Vkc8l303q6DsL4VD85C9YqKzAS2bGNtBAH\nCzswCgYIKoZIzj0EAwIDRwAwRAIgUbgjlh4/hZLz96v38GMP+WJ/7SyApNBTNkOh\nlcW/j2MCIGV/xAQaZhhq7QQqIIs1PEFOdfZ9/XiU+l8cBAv0EmsI\n-----END CERTIFICATE-----\n"
+            },
+            "grpcOptions": {
+                "ssl-target-name-override": "peer1.store2.mymarket.com",
+                "hostnameOverride": "peer1.store2.mymarket.com"
+            }
+        }
+    }
+}
