@@ -78,3 +78,18 @@ cd app/store2
 gradle bootJar
 java -jar build/libs/store2-1.0-SNAPSHOT-boot.jar
 ~~~
+
+### RestAPIs
+
+##### store1
+
+[GET] http://localhost:3000/store1/api/manager/product/:ID   
+[GET] http://localhost:3000/store1/api/manager/product/all   
+[POST] http://localhost:3000/store1/api/manager/product   
+    - body(json) : {"name":"productName","qty":"100","owner":"store1"}
+
+##### store2
+[GET] http://localhost:8080/api/manager/product/:ID   
+[GET] http://localhost:8080/api/manager/product/all   
+[POST] http://localhost:8080/api/manager/product   
+    - body(json) : {"name":"productName","qty":"100","owner":"store2"}
