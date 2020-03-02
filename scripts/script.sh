@@ -3,10 +3,12 @@
 CHANNEL_NAME=$1
 DELAY=$2
 TIMEOUT=$3
-ORDERER_CA=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/mymarket.com/orderers/orderer.mymarket.com/msp/tlscacerts/tlsca.mymarket.com-cert.pem
+ORDERER_CA=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/mymarket.com/orderers/orderer1.mymarket.com/msp/tlscacerts/tlsca.mymarket.com-cert.pem
 LANGUAGE="golang"
 #CC_SRC_PATH=github.com/chaincode/chaincode_example02/go
 CC_SRC_PATH=github.com/chaincode/mymarket/go
+COUNTER=1
+MAX_RETRY=10
 
 . ./scripts/utils.sh
 
@@ -15,12 +17,12 @@ createChannel() {
 
         if [ -z "$CORE_PEER_TLS_ENABLED" -o "$CORE_PEER_TLS_ENABLED" = "false" ]; then
                 set -x
-                peer channel create -o orderer.mymarket.com:7050 -c $CHANNEL_NAME -f ./channel-artifacts/channel.tx &> log.txt
+                peer channel create -o orderer1.mymarket.com:7050 -c $CHANNEL_NAME -f ./channel-artifacts/channel.tx &> log.txt
                 res=$?
                 set +x
         else
                 set -x
-                peer channel create -o orderer.mymarket.com:7050 -c $CHANNEL_NAME -f ./channel-artifacts/channel.tx --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA &> log.txt
+                peer channel create -o orderer1.mymarket.com:7050 -c $CHANNEL_NAME -f ./channel-artifacts/channel.tx --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA &> log.txt
                 res=$?
                 set +x
         fi
@@ -34,7 +36,7 @@ joinChannel () {
         for org in 1 2; do
             for peer in 0 1; do
                 joinChannelWithRetry $peer $org
-                echo "===================== peer${peer}.org${org} joined on the channel \"$CHANNEL_NAME\" ===================== "
+                echo "===================== peer${peer}.store${org} joined on the channel \"$CHANNEL_NAME\" ===================== "
                 sleep $DELAY
                 echo
             done
@@ -48,18 +50,18 @@ updateAnchorPeers() {
 
   if [ -z "$CORE_PEER_TLS_ENABLED" -o "$CORE_PEER_TLS_ENABLED" = "false" ]; then
                 set -x
-                peer channel update -o orderer.mymarket.com:7050 -c $CHANNEL_NAME -f ./channel-artifacts/${CORE_PEER_LOCALMSPID}anchors.tx &> log.txt
+                peer channel update -o orderer1.mymarket.com:7050 -c $CHANNEL_NAME -f ./channel-artifacts/${CORE_PEER_LOCALMSPID}anchors.tx &> log.txt
                 res=$?
                 set +x
   else
                 set -x
-                peer channel update -o orderer.mymarket.com:7050 -c $CHANNEL_NAME -f ./channel-artifacts/${CORE_PEER_LOCALMSPID}anchors.tx --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA &>log.txt
+                peer channel update -o orderer1.mymarket.com:7050 -c $CHANNEL_NAME -f ./channel-artifacts/${CORE_PEER_LOCALMSPID}anchors.tx --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA &>log.txt
                 res=$?
                 set +x
   fi
         cat log.txt
         verifyResult $res "Anchor peer update failed"
-        echo "===================== Anchor peers for org \"$CORE_PEER_LOCALMSPID\" on \"$CHANNEL_NAME\" is updated successfully ===================== "
+        echo "===================== Anchor peers for store \"$CORE_PEER_LOCALMSPID\" on \"$CHANNEL_NAME\" is updated successfully ===================== "
         sleep $DELAY
         echo
 }
@@ -74,8 +76,8 @@ installChaincode () {
         res=$?
         set +x
         cat log.txt
-        verifyResult $res "Chaincode installation on peer${PEER}.org${ORG} has Failed"
-        echo "===================== Chaincode is installed on peer${PEER}.org${ORG} ===================== "
+        verifyResult $res "Chaincode installation on peer${PEER}.store${ORG} has Failed"
+        echo "===================== Chaincode is installed on peer${PEER}.store${ORG} ===================== "
 	sleep $DELAY
         echo
 }
@@ -90,18 +92,18 @@ instantiateChaincode () {
         # lets supply it directly as we know it using the "-o" option
         if [ -z "$CORE_PEER_TLS_ENABLED" -o "$CORE_PEER_TLS_ENABLED" = "false" ]; then
                 set -x
-                peer chaincode instantiate -o orderer.mymarket.com:7050 -C $CHANNEL_NAME -n marketcc -l ${LANGUAGE} -v ${VERSION} -c '{"Args":[]}' -P "AND ('Store1MSP.peer','Store2MSP.peer')" &> log.txt
+                peer chaincode instantiate -o orderer1.mymarket.com:7050 -C $CHANNEL_NAME -n marketcc -l ${LANGUAGE} -v ${VERSION} -c '{"Args":[]}' -P "AND ('Store1MSP.peer','Store2MSP.peer')" &> log.txt
                 res=$?
                 set +x
         else
                 set -x
-                peer chaincode instantiate -o orderer.mymarket.com:7050 --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA -C $CHANNEL_NAME -n marketcc -l ${LANGUAGE} -v 1.0 -c '{"Args":[]}' -P "AND ('Store1MSP.peer','Store2MSP.peer')" &> log.txt
+                peer chaincode instantiate -o orderer1.mymarket.com:7050 --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA -C $CHANNEL_NAME -n marketcc -l ${LANGUAGE} -v 1.0 -c '{"Args":[]}' -P "AND ('Store1MSP.peer','Store2MSP.peer')" &> log.txt
                 res=$?
                 set +x
         fi
         cat log.txt
-        verifyResult $res "Chaincode instantiation on peer${PEER}.org${ORG} on channel '$CHANNEL_NAME' failed"
-        echo "===================== Chaincode Instantiation on peer${PEER}.org${ORG} on channel '$CHANNEL_NAME' is successful ===================== "
+        verifyResult $res "Chaincode instantiation on peer${PEER}.store${ORG} on channel '$CHANNEL_NAME' failed"
+        echo "===================== Chaincode Instantiation on peer${PEER}.store${ORG} on channel '$CHANNEL_NAME' is successful ===================== "
 	sleep $DELAY
         echo
 }

@@ -170,7 +170,7 @@ func (t *SimpleChaincode) registProducts(stub shim.ChaincodeStubInterface, args 
 	newProductKeyAsBytes, _ := json.Marshal(newProductKey)
 	stub.PutState("latestKey", newProductKeyAsBytes)
 
-	return shim.Success(nil)
+	return shim.Success(newProductKeyAsBytes)
 }
 
 func (t *SimpleChaincode) getProduct(stub shim.ChaincodeStubInterface, args []string) pb.Response {

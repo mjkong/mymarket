@@ -3,6 +3,9 @@
 .project
 *.bak
 .idea/
+.settings/
+.gradle
+*.classpath
 app/mgmt/node_modules/
 app/mgmt/package-lock.json
 app/main/node_modules/

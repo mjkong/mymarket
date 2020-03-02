@@ -13,7 +13,7 @@ OrdererOrgs:
   - Name: MymarketHQ
     Domain: mymarket.com
     Specs:	
-      - Hostname: orderer
+      - Hostname: orderer1
       - Hostname: orderer2
       - Hostname: orderer3
       - Hostname: orderer4
