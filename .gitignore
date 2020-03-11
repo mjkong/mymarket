@@ -2,6 +2,13 @@
 .DS_Store
 .project
 *.bak
+**/.idea/
+**/out
+**/build
+**/.gradle/
+**/.settings/
+**/.classpath
+**/vendor
 app/mgmt/node_modules/
 app/mgmt/package-lock.json
 app/main/node_modules/
