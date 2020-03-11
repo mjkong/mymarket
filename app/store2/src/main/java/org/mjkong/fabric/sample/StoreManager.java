@@ -5,8 +5,7 @@ import org.hyperledger.fabric.gateway.Contract;
 import org.hyperledger.fabric.gateway.Gateway;
 import org.hyperledger.fabric.gateway.Network;
 import org.hyperledger.fabric.gateway.Wallet;
-import org.mjkong.fabric.sample.model.Category;
-import org.mjkong.fabric.sample.model.Product;
+import org.mjkong.fabric.sample.api.model.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -31,6 +30,7 @@ public class StoreManager {
 
     public static final Logger logger = LoggerFactory.getLogger(StoreManager.class);
     private static Gateway gateway;
+    private static ObjectMapper mapper;
 
     @RequestMapping("/")
     String home() {
@@ -71,49 +71,51 @@ public class StoreManager {
 
     @RequestMapping(value = "/manager/product/all", method = RequestMethod.GET)
     public ResponseEntity<?> getProductList() {
-        String resultStr = "";
+        ProductList pList = null;
 
         try {
 
             byte[] result = getContract("mymarketchannel", "marketcc").submitTransaction("getProductList", "" );
-            resultStr = new String(result, UTF_8);
+            pList = getMapper().readValue(new String(result, UTF_8), ProductList.class);
 
         }catch(Exception e){
             e.printStackTrace();
         }
 
-        return new ResponseEntity<>(resultStr, HttpStatus.OK);
+        return new ResponseEntity<>(pList, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/manager/product/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> getProduct(@PathVariable String id) {
-        String resultStr = "";
+        ProductRecord resultProduct = null;
 
         try {
 
             byte[] result = getContract("mymarketchannel", "marketcc").submitTransaction("getProduct", id);
-            resultStr = new String(result, UTF_8);
+            resultProduct = getMapper().readValue(new String(result, UTF_8), ProductRecord.class);
 
         }catch(Exception e){
             e.printStackTrace();
         }
 
-        return new ResponseEntity<>(resultStr, HttpStatus.OK);
+        return new ResponseEntity<>(resultProduct, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/manager/product", method = RequestMethod.POST)
-    public ResponseEntity<?> createProduct(@RequestBody Product product){
+    public ResponseEntity<?> createProduct(@RequestBody ProductInfo productInfo){
         String resultStr = "";
+        ProductKey key = null;
 
         try {
-            byte[] result = getContract("mymarketchannel", "marketcc").submitTransaction("registProducts", product.getName(), product.getQty(), product.getOwner());
+            byte[] result = getContract("mymarketchannel", "marketcc").submitTransaction("registProducts", productInfo.getName(), productInfo.getQty(), productInfo.getOwner());
             resultStr = new String(result, UTF_8);
+            key = getMapper().readValue(new String(result, UTF_8), ProductKey.class);
 
         }catch(Exception e){
             e.printStackTrace();;
         }
 
-        return new ResponseEntity<>(resultStr, HttpStatus.CREATED);
+        return new ResponseEntity<>(key, HttpStatus.CREATED);
     }
 
 
@@ -134,11 +136,20 @@ public class StoreManager {
         return connectToBlockchain();
     }
 
+    private ObjectMapper getMapper(){
+
+        if(mapper == null){
+            mapper = new ObjectMapper();
+        }
+
+        return mapper;
+    }
+
     public Gateway connectToBlockchain() throws Exception {
 
         logger.info("Start to connect Gateway");
 
-        Path projectRoot = Paths.get("/","home","fabric","mymarket","app","store2");
+        Path projectRoot = Paths.get("/","Users","mjkong","Dev", "projects","mymarket","app","store2");
 
         Path walletPath = projectRoot.resolve(Paths.get("wallet"));
         logger.info("wallet path: " + walletPath.toString());

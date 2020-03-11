@@ -21,7 +21,7 @@ public class AddUser {
             Path certificatePem = credentialPath.resolve(Paths.get("signcerts",
                     "User1@store2.mymarket.com-cert.pem"));
             Path privateKey = credentialPath.resolve(Paths.get("keystore",
-                    "7e4aaa3489a23e0e02d70f1ac7f29911cadea8d42ff3f4c032398b19f770563a_sk"));
+                    "78d3b4dd06c71db789fb552deafd3f92e388527b86e538484e05ca5548500de5_sk"));
 
             // Load credentials into wallet
             String identityLabel = "User1@store2.mymarket.com";
