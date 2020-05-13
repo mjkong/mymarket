@@ -2,25 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="977b0a4e-b207-4197-80a3-fba2b7e9d4ad" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/mjkong/fabric/sample/api/model/Category.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/mjkong/fabric/sample/api/model/ProductInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/mjkong/fabric/sample/api/model/ProductKey.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/mjkong/fabric/sample/api/support/APIResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../../.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/mymarketStore2Connection.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/mymarketStore2Connection.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mjkong/fabric/sample/AddUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mjkong/fabric/sample/AddUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mjkong/fabric/sample/StoreManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mjkong/fabric/sample/StoreManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mjkong/fabric/sample/model/Category.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/mjkong/fabric/sample/model/Product.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/wallet/User1@store2.mymarket.com/User1@store2.mymarket.com" beforeDir="false" afterPath="$PROJECT_DIR$/wallet/User1@store2.mymarket.com/User1@store2.mymarket.com" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wallet/User1@store2.mymarket.com/User1@store2.mymarket.com-priv" beforeDir="false" afterPath="$PROJECT_DIR$/wallet/User1@store2.mymarket.com/User1@store2.mymarket.com-priv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../chaincode/mymarket/go/mymarket.go" beforeDir="false" afterPath="$PROJECT_DIR$/../../chaincode/mymarket/go/mymarket.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../config/configtx.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../config/core.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../config/orderer.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../deploy/docker-compose/docker-compose.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../../docker-compose.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../start.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../../start.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../stop.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../../stop.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -204,10 +190,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.StoreManager" />
+        <item itemvalue="Application.InvokeApp" />
+        <item itemvalue="Application.AddUser" />
         <item itemvalue="Application.ProductList" />
         <item itemvalue="Gradle.store2 [bootJar]" />
-        <item itemvalue="Application.AddUser" />
-        <item itemvalue="Application.InvokeApp" />
       </list>
     </recent_temporary>
   </component>
@@ -228,6 +214,7 @@
       <workItem from="1583718037036" duration="8700000" />
       <workItem from="1583738942228" duration="2189000" />
       <workItem from="1583748894477" duration="16858000" />
+      <workItem from="1589359525666" duration="476000" />
     </task>
     <servers />
   </component>
@@ -266,6 +253,10 @@
       <screen x="0" y="23" width="1920" height="1152" />
     </state>
     <state x="956" y="264" key="#Project_Structure/0.23.1920.1152@0.23.1920.1152" timestamp="1583727417149" />
+    <state x="424" y="261" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1589359703552">
+      <screen x="0" y="23" width="1920" height="1152" />
+    </state>
+    <state x="424" y="261" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1920.1152@0.23.1920.1152" timestamp="1589359703552" />
     <state x="1169" y="315" key="#com.intellij.ide.util.MemberChooser" timestamp="1583762051111">
       <screen x="0" y="23" width="1920" height="1152" />
     </state>
@@ -286,38 +277,38 @@
       <screen x="0" y="23" width="1920" height="1152" />
     </state>
     <state x="1119" y="309" key="#xdebugger.evaluate/0.23.1920.1152@0.23.1920.1152" timestamp="1583762975652" />
-    <state width="1085" height="395" key="GridCell.Tab.0.bottom" timestamp="1583854628892">
+    <state width="939" height="395" key="GridCell.Tab.0.bottom" timestamp="1589360029384">
       <screen x="0" y="23" width="1920" height="1152" />
     </state>
-    <state width="1085" height="395" key="GridCell.Tab.0.bottom/0.23.1920.1152@0.23.1920.1152" timestamp="1583854628892" />
-    <state width="1085" height="395" key="GridCell.Tab.0.center" timestamp="1583854628892">
+    <state width="939" height="395" key="GridCell.Tab.0.bottom/0.23.1920.1152@0.23.1920.1152" timestamp="1589360029384" />
+    <state width="939" height="395" key="GridCell.Tab.0.center" timestamp="1589360029383">
       <screen x="0" y="23" width="1920" height="1152" />
     </state>
-    <state width="1085" height="395" key="GridCell.Tab.0.center/0.23.1920.1152@0.23.1920.1152" timestamp="1583854628892" />
-    <state width="1085" height="395" key="GridCell.Tab.0.left" timestamp="1583854628891">
+    <state width="939" height="395" key="GridCell.Tab.0.center/0.23.1920.1152@0.23.1920.1152" timestamp="1589360029383" />
+    <state width="939" height="395" key="GridCell.Tab.0.left" timestamp="1589360029383">
       <screen x="0" y="23" width="1920" height="1152" />
     </state>
-    <state width="1085" height="395" key="GridCell.Tab.0.left/0.23.1920.1152@0.23.1920.1152" timestamp="1583854628891" />
-    <state width="1085" height="395" key="GridCell.Tab.0.right" timestamp="1583854628892">
+    <state width="939" height="395" key="GridCell.Tab.0.left/0.23.1920.1152@0.23.1920.1152" timestamp="1589360029383" />
+    <state width="939" height="395" key="GridCell.Tab.0.right" timestamp="1589360029384">
       <screen x="0" y="23" width="1920" height="1152" />
     </state>
-    <state width="1085" height="395" key="GridCell.Tab.0.right/0.23.1920.1152@0.23.1920.1152" timestamp="1583854628892" />
-    <state width="1085" height="395" key="GridCell.Tab.1.bottom" timestamp="1583854628893">
+    <state width="939" height="395" key="GridCell.Tab.0.right/0.23.1920.1152@0.23.1920.1152" timestamp="1589360029384" />
+    <state width="939" height="395" key="GridCell.Tab.1.bottom" timestamp="1589360065770">
       <screen x="0" y="23" width="1920" height="1152" />
     </state>
-    <state width="1085" height="395" key="GridCell.Tab.1.bottom/0.23.1920.1152@0.23.1920.1152" timestamp="1583854628893" />
-    <state width="1085" height="395" key="GridCell.Tab.1.center" timestamp="1583854628892">
+    <state width="939" height="395" key="GridCell.Tab.1.bottom/0.23.1920.1152@0.23.1920.1152" timestamp="1589360065770" />
+    <state width="939" height="395" key="GridCell.Tab.1.center" timestamp="1589360065769">
       <screen x="0" y="23" width="1920" height="1152" />
     </state>
-    <state width="1085" height="395" key="GridCell.Tab.1.center/0.23.1920.1152@0.23.1920.1152" timestamp="1583854628892" />
-    <state width="1085" height="395" key="GridCell.Tab.1.left" timestamp="1583854628892">
+    <state width="939" height="395" key="GridCell.Tab.1.center/0.23.1920.1152@0.23.1920.1152" timestamp="1589360065769" />
+    <state width="939" height="395" key="GridCell.Tab.1.left" timestamp="1589360065769">
       <screen x="0" y="23" width="1920" height="1152" />
     </state>
-    <state width="1085" height="395" key="GridCell.Tab.1.left/0.23.1920.1152@0.23.1920.1152" timestamp="1583854628892" />
-    <state width="1085" height="395" key="GridCell.Tab.1.right" timestamp="1583854628893">
+    <state width="939" height="395" key="GridCell.Tab.1.left/0.23.1920.1152@0.23.1920.1152" timestamp="1589360065769" />
+    <state width="939" height="395" key="GridCell.Tab.1.right" timestamp="1589360065769">
       <screen x="0" y="23" width="1920" height="1152" />
     </state>
-    <state width="1085" height="395" key="GridCell.Tab.1.right/0.23.1920.1152@0.23.1920.1152" timestamp="1583854628893" />
+    <state width="939" height="395" key="GridCell.Tab.1.right/0.23.1920.1152@0.23.1920.1152" timestamp="1589360065769" />
     <state x="1021" y="282" key="search.everywhere.popup" timestamp="1583760918394">
       <screen x="0" y="23" width="1920" height="1152" />
     </state>

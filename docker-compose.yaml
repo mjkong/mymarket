@@ -17,7 +17,7 @@ networks:
 services:
   orderer1.mymarket.com:
     container_name: orderer1.mymarket.com
-    image: hyperledger/fabric-orderer
+    image: hyperledger/fabric-orderer:$IMG_VERSION
     environment:
       - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=${COMPOSE_PROJECT_NAME}_mymarket
       - FABRIC_LOGGING_SPEC=INFO
@@ -49,7 +49,7 @@ services:
 
   orderer2.mymarket.com:
     container_name: orderer2.mymarket.com
-    image: hyperledger/fabric-orderer
+    image: hyperledger/fabric-orderer:$IMG_VERSION
     environment:
       - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=${COMPOSE_PROJECT_NAME}_mymarket
       - FABRIC_LOGGING_SPEC=INFO
@@ -81,7 +81,7 @@ services:
 
   orderer3.mymarket.com:
     container_name: orderer3.mymarket.com
-    image: hyperledger/fabric-orderer
+    image: hyperledger/fabric-orderer:$IMG_VERSION
     environment:
       - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=${COMPOSE_PROJECT_NAME}_mymarket
       - FABRIC_LOGGING_SPEC=INFO
@@ -113,7 +113,7 @@ services:
 
   orderer4.mymarket.com:
     container_name: orderer4.mymarket.com
-    image: hyperledger/fabric-orderer
+    image: hyperledger/fabric-orderer:$IMG_VERSION
     environment:
       - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=${COMPOSE_PROJECT_NAME}_mymarket
       - FABRIC_LOGGING_SPEC=INFO
@@ -145,7 +145,7 @@ services:
 
   orderer5.mymarket.com:
     container_name: orderer5.mymarket.com
-    image: hyperledger/fabric-orderer
+    image: hyperledger/fabric-orderer:$IMG_VERSION
     environment:
       - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=${COMPOSE_PROJECT_NAME}_mymarket
       - FABRIC_LOGGING_SPEC=INFO
@@ -177,7 +177,7 @@ services:
 
   peer0.store1.mymarket.com:
     container_name: peer0.store1.mymarket.com
-    image: hyperledger/fabric-peer
+    image: hyperledger/fabric-peer:$IMG_VERSION
     environment:
       - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
       - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=${COMPOSE_PROJECT_NAME}_mymarket
@@ -211,7 +211,7 @@ services:
 
   peer1.store1.mymarket.com:
     container_name: peer1.store1.mymarket.com
-    image: hyperledger/fabric-peer
+    image: hyperledger/fabric-peer:$IMG_VERSION
     environment:
       - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
       - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=${COMPOSE_PROJECT_NAME}_mymarket
@@ -245,7 +245,7 @@ services:
 
   peer0.store2.mymarket.com:
     container_name: peer0.store2.mymarket.com
-    image: hyperledger/fabric-peer
+    image: hyperledger/fabric-peer:$IMG_VERSION
     environment:
       - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
       - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=${COMPOSE_PROJECT_NAME}_mymarket
@@ -279,7 +279,7 @@ services:
 
   peer1.store2.mymarket.com:
     container_name: peer1.store2.mymarket.com
-    image: hyperledger/fabric-peer
+    image: hyperledger/fabric-peer:$IMG_VERSION
     environment:
       - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
       - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=${COMPOSE_PROJECT_NAME}_mymarket
@@ -313,7 +313,7 @@ services:
 
   cli:
     container_name: cli
-    image: hyperledger/fabric-tools
+    image: hyperledger/fabric-tools:$IMG_VERSION
     tty: true
     stdin_open: true
     environment:
