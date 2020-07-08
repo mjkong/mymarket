@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="977b0a4e-b207-4197-80a3-fba2b7e9d4ad" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../../.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../../docker-compose.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../start.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../../start.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../stop.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../../stop.sh" afterDir="false" />
-    </list>
+    <list default="true" id="977b0a4e-b207-4197-80a3-fba2b7e9d4ad" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -92,10 +86,10 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -215,6 +209,7 @@
       <workItem from="1583738942228" duration="2189000" />
       <workItem from="1583748894477" duration="16858000" />
       <workItem from="1589359525666" duration="476000" />
+      <workItem from="1594195315362" duration="125000" />
     </task>
     <servers />
   </component>
@@ -226,9 +221,7 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
@@ -247,6 +240,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="956" y="264" key="#Project_Structure" timestamp="1583727417149">

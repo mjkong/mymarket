@@ -149,7 +149,7 @@ public class StoreManager {
 
         logger.info("Start to connect Gateway");
 
-        Path projectRoot = Paths.get("/","Users","mjkong","Dev", "projects","mymarket","app","store2");
+        Path projectRoot = Paths.get("/","home","fabric","mymarket","app","store2");
 
         Path walletPath = projectRoot.resolve(Paths.get("wallet"));
         logger.info("wallet path: " + walletPath.toString());
