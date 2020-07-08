@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 CURRENT_DIR=$PWD
 NO_CHAINCODE="false"
