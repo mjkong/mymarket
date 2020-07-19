@@ -1,0 +1,17 @@
+{
+    "name": "mymarket_store1",
+    "version": "1.0.0",
+    "description": "",
+    "main": "app.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node app.js"
+    },
+    "dependencies": {
+        "express": "^4.17.1",
+        "fabric-client": "~1.4.0",
+        "fabric-network": "~1.4.0"
+    },
+    "author": "Mooje Kong",
+    "license": "Apache-2.0"
+}

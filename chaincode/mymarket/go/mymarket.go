@@ -1,7 +1,6 @@
 package main
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"strconv"
@@ -25,9 +24,18 @@ type MymarketProduct struct {
 	Owner string `json:"owner"`
 }
 
+type ProductObject struct {
+	Key    string          `json:"key"`
+	Record MymarketProduct `json:"record"`
+}
+
+type ProductList struct {
+	ProductList []ProductObject `json:"productList"`
+}
+
 type ProductKey struct {
-	Key string
-	Idx int
+	Key string `json:"key"`
+	Idx int    `json:"idx"`
 }
 
 type PurchaseHistory struct {
@@ -170,7 +178,7 @@ func (t *SimpleChaincode) registProducts(stub shim.ChaincodeStubInterface, args 
 	newProductKeyAsBytes, _ := json.Marshal(newProductKey)
 	stub.PutState("latestKey", newProductKeyAsBytes)
 
-	return shim.Success(nil)
+	return shim.Success(newProductKeyAsBytes)
 }
 
 func (t *SimpleChaincode) getProduct(stub shim.ChaincodeStubInterface, args []string) pb.Response {
@@ -179,10 +187,10 @@ func (t *SimpleChaincode) getProduct(stub shim.ChaincodeStubInterface, args []st
 	product := MymarketProduct{}
 	json.Unmarshal(productAsBytes, &product)
 
-	fmt.Println("Key : " + product.Name + ", Qty : " + product.Qty + " , Owner : " + product.Owner)
+	var productObj = ProductObject{Key: args[0], Record: product}
+	productObjAsBytes, _ := json.Marshal(productObj)
 
-	return shim.Success(nil)
-
+	return shim.Success(productObjAsBytes)
 }
 
 func (t *SimpleChaincode) getProductList(stub shim.ChaincodeStubInterface, args []string) pb.Response {
@@ -195,47 +203,29 @@ func (t *SimpleChaincode) getProductList(stub shim.ChaincodeStubInterface, args 
 
 	var startKey = "PD0"
 	var endKey = productKey.Key + idxStr
-	fmt.Println(startKey)
-	fmt.Println(endKey)
 
 	resultsIterator, err := stub.GetStateByRange(startKey, endKey)
 	if err != nil {
 		return shim.Error(err.Error())
 	}
-
 	defer resultsIterator.Close()
 
-	var idx int = 0
-
-	// buffer is a JSON array containing QueryResults
-	var buffer bytes.Buffer
-	buffer.WriteString("[")
-	bArrayMemberAlreadyWritten := false
+	products := make([]ProductObject, 0)
 	for resultsIterator.HasNext() {
-		fmt.Printf("%d", idx)
-		idx++
 		queryResponse, err := resultsIterator.Next()
 		if err != nil {
 			return shim.Error(err.Error())
 		}
-		// Add a comma before array members, suppress it for the first array member
-		if bArrayMemberAlreadyWritten == true {
-			buffer.WriteString(",")
-		}
-		buffer.WriteString("{\"Key\":")
-		buffer.WriteString("\"")
-		buffer.WriteString(queryResponse.Key)
-		buffer.WriteString("\"")
 
-		buffer.WriteString(", \"Record\":")
-		// Record is a JSON object, so we write as-is
-		buffer.WriteString(string(queryResponse.Value))
-		buffer.WriteString("}")
-		bArrayMemberAlreadyWritten = true
+		var product = MymarketProduct{}
+		json.Unmarshal(queryResponse.Value, &product)
+		var productObject = ProductObject{Key: queryResponse.Key, Record: product}
+		products = append(products, productObject)
 	}
-	buffer.WriteString("]")
+	var productList = ProductList{ProductList: products}
+	returnAsBytes, _ := json.Marshal(productList)
 
-	return shim.Success(buffer.Bytes())
+	return shim.Success(returnAsBytes)
 }
 
 func (t *SimpleChaincode) transferOwner(stub shim.ChaincodeStubInterface, args []string) pb.Response {

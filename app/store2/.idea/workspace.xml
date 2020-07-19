@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="977b0a4e-b207-4197-80a3-fba2b7e9d4ad" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../store1/adduser.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store1/app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store1/config/ca_config.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store1/config/mymarketStore1Connection.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store1/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../store1/wallet/User1@store1.mymarket.com/User1@store1.mymarket.com" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/main/org/mjkong/fabric/sample/AddUser.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/main/org/mjkong/fabric/sample/InvokeApp.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/main/org/mjkong/fabric/sample/StoreManager.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/main/org/mjkong/fabric/sample/model/Category.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/main/org/mjkong/fabric/sample/model/Product.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/mymarketStore2Connection.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/mjkong/fabric/sample/AddUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/mjkong/fabric/sample/InvokeApp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/mjkong/fabric/sample/StoreManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/mjkong/fabric/sample/api/model/Category.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/mjkong/fabric/sample/api/model/ProductInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/mjkong/fabric/sample/api/model/ProductKey.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/mjkong/fabric/sample/api/model/ProductList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/mjkong/fabric/sample/api/model/ProductRecord.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/mjkong/fabric/sample/api/support/APIResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wallet/User1@store2.mymarket.com/User1@store2.mymarket.com" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wallet/User1@store2.mymarket.com/User1@store2.mymarket.com-priv" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="store2" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="store2" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="store2" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="application" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="store2" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <replaceStrings>
+      <replace />
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
+  </component>
+  <component name="ProjectConfigurationFiles">
+    <option name="files">
+      <list>
+        <option value="$PROJECT_DIR$/.idea/misc.xml" />
+        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
+        <option value="$PROJECT_DIR$/.idea/gradle.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1TuPk9rhM7AabsuwBpOTvNtyza5" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+  </component>
+  <component name="RunManager" selected="Application.AddUser">
+    <configuration name="AddUser" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.mjkong.fabric.sample.AddUser" />
+      <module name="store2.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.mjkong.fabric.sample.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="InvokeApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.mjkong.fabric.sample.InvokeApp" />
+      <module name="store2.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.mjkong.fabric.sample.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProductList" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.mjkong.fabric.sample.api.model.ProductList" />
+      <module name="store2.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.mjkong.fabric.sample.api.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="StoreManager" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.mjkong.fabric.sample.StoreManager" />
+      <module name="store2.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.mjkong.fabric.sample.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="store2 [bootJar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="bootJar" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="StoreManager" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="store2.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.mjkong.fabric.sample.StoreManager" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.AddUser" />
+        <item itemvalue="Application.StoreManager" />
+        <item itemvalue="Application.InvokeApp" />
+        <item itemvalue="Application.ProductList" />
+        <item itemvalue="Gradle.store2 [bootJar]" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="977b0a4e-b207-4197-80a3-fba2b7e9d4ad" name="Default Changelist" comment="" />
+      <created>1573646596035</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1573646596035</updated>
+      <workItem from="1573646599010" duration="8574000" />
+      <workItem from="1573721517039" duration="10161000" />
+      <workItem from="1574248283651" duration="479000" />
+      <workItem from="1578671410948" duration="104000" />
+      <workItem from="1583718037036" duration="8700000" />
+      <workItem from="1583738942228" duration="2189000" />
+      <workItem from="1583748894477" duration="16858000" />
+      <workItem from="1589359525666" duration="476000" />
+      <workItem from="1594195315362" duration="125000" />
+      <workItem from="1594290543365" duration="498000" />
+      <workItem from="1595166244369" duration="1323000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="424" y="261" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1589359703552">
+      <screen x="0" y="23" width="1920" height="1152" />
+    </state>
+    <state x="424" y="261" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1920.1152@0.23.1920.1152" timestamp="1589359703552" />
+    <state width="939" height="321" key="GridCell.Tab.0.bottom" timestamp="1595166538733">
+      <screen x="0" y="23" width="1920" height="1152" />
+    </state>
+    <state width="939" height="321" key="GridCell.Tab.0.bottom/0.23.1920.1152@0.23.1920.1152" timestamp="1595166538733" />
+    <state width="939" height="321" key="GridCell.Tab.0.center" timestamp="1595166538732">
+      <screen x="0" y="23" width="1920" height="1152" />
+    </state>
+    <state width="939" height="321" key="GridCell.Tab.0.center/0.23.1920.1152@0.23.1920.1152" timestamp="1595166538732" />
+    <state width="939" height="321" key="GridCell.Tab.0.left" timestamp="1595166538731">
+      <screen x="0" y="23" width="1920" height="1152" />
+    </state>
+    <state width="939" height="321" key="GridCell.Tab.0.left/0.23.1920.1152@0.23.1920.1152" timestamp="1595166538731" />
+    <state width="939" height="321" key="GridCell.Tab.0.right" timestamp="1595166538732">
+      <screen x="0" y="23" width="1920" height="1152" />
+    </state>
+    <state width="939" height="321" key="GridCell.Tab.0.right/0.23.1920.1152@0.23.1920.1152" timestamp="1595166538732" />
+    <state width="939" height="395" key="GridCell.Tab.1.bottom" timestamp="1589360065770">
+      <screen x="0" y="23" width="1920" height="1152" />
+    </state>
+    <state width="939" height="395" key="GridCell.Tab.1.bottom/0.23.1920.1152@0.23.1920.1152" timestamp="1589360065770" />
+    <state width="939" height="395" key="GridCell.Tab.1.center" timestamp="1589360065769">
+      <screen x="0" y="23" width="1920" height="1152" />
+    </state>
+    <state width="939" height="395" key="GridCell.Tab.1.center/0.23.1920.1152@0.23.1920.1152" timestamp="1589360065769" />
+    <state width="939" height="395" key="GridCell.Tab.1.left" timestamp="1589360065769">
+      <screen x="0" y="23" width="1920" height="1152" />
+    </state>
+    <state width="939" height="395" key="GridCell.Tab.1.left/0.23.1920.1152@0.23.1920.1152" timestamp="1589360065769" />
+    <state width="939" height="395" key="GridCell.Tab.1.right" timestamp="1589360065769">
+      <screen x="0" y="23" width="1920" height="1152" />
+    </state>
+    <state width="939" height="395" key="GridCell.Tab.1.right/0.23.1920.1152@0.23.1920.1152" timestamp="1589360065769" />
+  </component>
+</project>
