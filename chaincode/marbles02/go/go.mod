@@ -14,5 +14,5 @@ require (
 	github.com/spf13/viper v1.4.0 // indirect
 	github.com/sykesm/zap-logfmt v0.0.2 // indirect
 	golang.org/x/crypto v0.1.0 // indirect
-	google.golang.org/grpc v1.21.1 // indirect
+	google.golang.org/grpc v1.53.0 // indirect
 )
